@@ -510,6 +510,237 @@ someone outside of the state, such as MO.
 • Cross-border: Selling from one country into another.
 
 
++==================================================================================================== Questions=====================================================================================================
+
+=> What is the difference between omnichannel and multichannel retailing?
+
+• • Multichannel means that each channel of interacting with a
+company is siloed. There is little organization and universal
+strategy. Seems to be mostly an anti-pattern.
+
+• • Omnichannel is where all lines of access to the company are
+coordinated. Similar teams. The goal is to reduce the friction across
+the experiences and make it as seamless as possible.
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> How can you set up a product catalog for best search results, taking into account issues of duplicate content, meta content, meta title, keyword search terms in product description, attribute weight, and so
+on?	
+
+• • Key is to think about what people are looking for and use those
+words. It is far more involved than this, as talking to customers,
+research in Google Analytics, and watching results over time will
+make the difference.
+
+• • Duplicate content is bad. Thus, the rel=”canonical” meta tag is very
+important to tell Google what is the “master” page. Magento by
+default brings in this issue with products: products are viewable
+just under the root domain (https://example.com/product-name)
+and also viewable under each category (https://example.com/
+category-name/product-name). Ensuring that the rel=”canonical” is
+on will make that tag point to the product under the root domain.
+
+• • Meta content (meta description?): is a shortened description that is
+often used by Google under the title of the page (the title tag). This
+is very important that there aren’t duplicate descriptions as these
+can be customized to increase a customer’s likelihood of clicking
+your url.
+
+• • In the baked-in catalog search, the attribute weight determines
+how likely Magento will return a match from that attribute.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What is a “canonical link element”?
+
+• • <link rel=”canonical” href=”http://example.com/wordpress/seo-
+plugin/”>
+
+• • This link tag tells search engines what is the original page. This
+is helpful to clean up duplicate content. Each of those duplicates
+should then point back to one page, and the page authority will be
+focused on that one spot.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What “social merchandising” techniques and tools are used in ecommerce?
+
+• • The features or tools that encourage people to interact with your
+website.
+
+• • Could be a wishlist or sharing buttons.
+
+• • This also would include tailoring related products or suggestions to
+that person.
+
+• • Reviews are means of attracting social proof, which is very
+effective in both generating more content for a website as well as
+encouraging other customers to purchase.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> When is SSL required when transacting data online?
+
+• • SSL is required for any time credit card information is transferred
+from a customer’s computer.
+
+• • However, browsers are making SSL required. For example, a
+message now appears when you log into a website (entering in
+your password), and you are not on an SSL connection.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+=> What is PA-DSS? When should PA-DSS be applied?
+
+• • It helps achieve PCI-DSS compliance. A good overview for this is
+the PCI Awareness Training.
+
+• • All organizations that handle cardholder data must be PCI-DSS
+compliant.
+
+• • PA-DSS is validating compliance of a system or a program. PCI-DSS
+is the validation of an organization (meaning the people, systems
+and hardware).
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What are typical omnichannel challenges?
+
+• • How to allow a customer to switch channels seamlessly?
+
+• • Personalization of the experience to the customer depending on
+what channel they are a part of.
+
+• • Real-time inventory tracking.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What is the process for getting a site certified as PCI compliant?
+
+• • Determine merchant level.
+
+• • Visa
+
+• • MasterCard
+
+• • This determines whether a SAQ will work or if you have to
+have an on-site assessor.
+
+• • Determine the SAQ.
+
+• • Complete the SAQ.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What are best practices for protecting ecommerce user data?
+
+• • Don’t store cardholder or other sensitive data. It is good to see the
+“saved credit card” option gone with Magento 2.
+
+• • Be careful with who handles cardholder data.
+
+• • Use strong hashing for passwords. This is another benefit of
+Magento 2.
+
+• • Use https on the website to protect cardholder and other data.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What are the best usability practices when building an online catalog and checkout system?
+
+• • As alluded to above:
+
+• Don’t stray too much from what the user considers the norm.
+This can vary per demographic or age group.
+
+• • Keep things simple:
+
+• < 5 choices
+• Clear calls to action (such as Add to Cart or Checkout)
+• Enough whitespace to set apart important elements.
+• Keep the cart link obvious, don’t assume that the customer will
+always go straight to checkout.
+• Ensure the user has context for where they are on the website.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+=> What are the main characteristics of Agile and Waterfall development methodologies?
+
+• • Agile is iterative; Waterfall is a longer period of work with less
+opportunities for feedback.
+
+
+• • Waterfall was more beneficial in the days of software distribution
+on CD-ROM. You needed to completely finalize the software before
+shipping it as delivering bugs to customers was a very bad thing.
+Also, it needed to have plenty of upgrades for the user to feel it
+was worthwhile to purchase and upgrade.
+
+• • Agile fits better with other delivery means (automatic).
+
+• • Because one can deploy often, it gives much faster feedback, and
+the product doesn’t have to be polished. Instead of one release a
+year, you can release weekly or even daily.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What are SMART requirements?
+
+• • Specific: the task must be defined.
+
+• • Manageable: the task must not be of gargantuan proportions.
+
+• • Assignable: the task must be able to be given to someone(s).
+
+• • Relevant: the task must be able to be completed given current
+bandwidth.
+
+• • Time-related: the task must be able to be completed within a
+certain time.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What are the requirements of the EU “cookie law”?
+
+• • Required after May 2011 (though, to my understanding, it is very
+poorly enforced).
+
+• • It requires that a website give customers the option to opt out of
+cookies being set on their computer.
+
+
+• • Requires that a website:
+
+• tells visitors that the website uses cookies.
+
+• explains what the cookies do
+
+• gets their approval for storing cookies on their computer.
+
+
+• •
+The Cookie Law is a piece of privacy legislation that requires websites to get consent from visitors to store or retrieve any information on a computer, smartphone or tablet.
+
+It was designed to protect online privacy, by making consumers aware of how information about them is collected and used online, and give them a choice to allow it or not. 
+
+It started as an EU Directive that was adopted by all EU countries in May 2011. The Directive gave individuals rights to refuse the use of cookies that reduce their online privacy. Each country then updated its own laws to comply. In the UK this meant an update to the Privacy and Electronic Communications Regulations.
+
+=======================================================================++++++++++++++++++++++++++++++++++++==========================++++++++++++++++++++++++++===========================+++++++++++++++++++=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
