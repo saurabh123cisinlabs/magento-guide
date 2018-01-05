@@ -1,0 +1,518 @@
+Link: https://inviqa.com/blog/magento-2-tutorial-how-to-create-command-line-module
+
+http://devdocs.magento.com/guides/v2.0/extension-dev-guide/build/di-xml-file.html
+
+
+
+=> What is cache:
+
+
+Cache is temprory files which saves configuration, layout, blocks, collection Data in the var/cache directory and increase the speed of magento by rendring pages using this stored cache files.
+
+In Magento we have the following cache types:
+
+Configuration (non-layout XML files)
+Layouts
+Blocks HTML output (Page blocks like headers, footers and callouts)
+Translations
+Collections Data
+EAV types and attributes
+Web Services Configuration
+
+
+=> cache:clean will only clean out those tags which have been flagged as invalid? it deletes the cache storage by tags.
+
+=> cache:flush will wipe out everything in the cache folder.
+
+
+
+====================================================================== Magento Foler structure ++++++++++++++++++++++++++++++++++++++
+
+======================================
+app
+
+app is one of the main locations within Magento 2. It contains all of our Application Logicso inside of app, you will see:
+
+.htaccess – Ensures that contents are not readable via a web browser.
+autoload.php – Handles registering of the autoloaders used by Magento 2.
+bootstrap.php – Starts the bootstrap process.
+functions.php – Registers global functions that are used throughout the application. Mainly the creation of value objects
+
+code – This folder is where all of our code will be placed.
+design – When working on themes, this is the place for you. Not only is your project located here, but you will also find the core Magento themes separated into frontend and admin sections.
+etc – If you’re looking for project configuration, you will find it here.
+
+    => The di.xml file configures which dependencies to inject by the object manager.
+
+il8n – Translations are kept here.
+
+
+Magento loads The configuration in the following stages:
+
+Initial (app/etc/di.xml)
+Global (<moduleDir>/etc/di.xml)
+Area-specific (<moduleDir>/etc/<area>/di.xml)
+
+======================================
+bin
+
+The bin directory is used for any binary files that are executable. The only Magento file in the bin directory is the Magento 2 CLI command that is used to run many maintenance tasks such as cache clearing, installing Magento, or running the indexers. There are many more commands, and this is where we will be looking to add functionality with our module.
+
+
+======================================
+lib
+
+The lib folder is similar to its equivalent in Magento 1. It contains the main framework for Magento as well as some core libraries that are required. you should use this folder to install extra libraries into the system. Instead, I suggest that you should only use this folder if you can’t make a Composer package out of your library.
+
+======================================
+pub
+
+The public folder is where your web server should point. Inside this directory are all of the auto-generated frontend assets that are used to render the site. It’s important to ensure the write permissions are set on these folders, otherwise you will run into some issues. But there is no active development done inside this directory. Instead, it’s used by Magento to place all assets that are needed. While in development mode, frontend assets are generated in real time; in fact, during development, you might find yourself running rm-rf pub/static/frontend/Theme.
+
+
+However, when you go into production having assets generated in real time, you would add too much overhead to page loads, so php bin/magento setup:staticcontent:deploy generates these assets on deployment. While we are talking about this command, it is worth noting that we only need to run this when we are operating in production mode. When in default or development modes, these assets are automatically generated on each request.
+
+=======================================
+
+setup
+
+This folder is only ever needed when you install Magento 2. As with Magento 1, you can customise the install process, but with the ease of using the web installer or the CLI, there is little to do in this folder.
+
+===========================================
+
+var
+
+As with Magento 1, the var folder contains all of the cache assets and auto-generated class files etc. Anything that Magento creates (other than the generated CSS, JS etc.) will be found in this folder. It also contains the log and report directories so, if you have an exception log or debug info you want to see, take a look in this directory. Folders such as page_cache and cache are easy to understand. However, you will see a folder called generation and di. Don’t worry if you do not see the di folder. You will only see this if you have compiled the DI container via the CLI and are working in production mode.
+
+These folders contain the compiled dependency injection container, as well as all of the generated factories that Magento needs to function. Again, during developer mode, these assets are generated in real-time, yet, when you move to production, there are more commands to run. 
+
+
+================================================
+Vendor
+
+this folder is generated by Composer and contains all of the dependencies that are defined within the composer.json file.
+
+
+====================================================================================================================================================================================================================
+
+
+1.1 ONLINE MERCHANDISING:
+
+++++++++++++++++++++++++++++
+Marketing strategies:
+
+Omnichannel: available in literally every touchpoint that a customer
+wants to interact with the brand. This likely includes a brick-and-
+mortar presence, website, social, phone and more. This also
+includes the notion of a customer being able to easily switch
+channels through their buying process. 
+
+mobile->website->store->shop->mobile
+
+
+++++++++++++++++++++++++++++++++++++
+Multichannel: non-integrated touch points. A customer cannot
+switch channels through the buying process. This more has to do
+with silos of communication than anything else.
+
+
++++++++++++++++++++++++++++++++++++++
+Affiliate marketing: using incentives such as cashback and other
+rewards to encourage people to recommend your brand.
+
+
+++++++++++++++++++++++++++++++++++++++
+Social marketing: the use of social media (Facebook, Twitter,
+Instagram, Pinterest, LinkedIn, etc) to spread the word about your
+company and interact with customers.
+
+
+++++++++++++++++++++++++++++++++++++++++
+Email marketing: the use of email to continue brand awareness.
+This remains as one of the most effective means of communication.
+
+
++++++++++++++++++++++++++++++++++++++
+Word of mouth marketing: the most effective marketing strategy. A
+customer loves your brand so much that they tell others about it.
+
+===============================================================================================
+Basic steps of setting up a new online store:
+
+Strategy (90%): who is your competition. and what will set you
+apart? What are you offering that your competitors will not offer?
+Why do you want to get into this business?
+
+
+Technology (10%):
+• • Determining the platform to start with. If this is a small
+company with limited funds, Magento is likely not the best
+option. A SaaS platform is likely to be the best option. It has a
+low cost of entry (monthly fees) and has many features.
+
+• • Hosting: We like MageMojo, but there is a plethora of hosting
+options on the market. It is good to talk with the hosting
+company to determine the server specifications necessary to
+find the right balance between computing power and paying
+too much.
+
+• • Deployment: getting the site going. Launching a new site is
+much easier than migrating existing websites. You just have
+to point the domain name at the store, remove any temporary
+protections (such as a password entry present during
+development), and you are good to go.
+
+• • Maintenance: the basic level of maintenance (from a
+developer’s point of view) includes patching. From a store
+owner’s view, they need to keep the products up to date, fulfill
+orders, and follow their strategy for growing the company.
+
+=================================================================================
+
+
+Search Strategies
+• • Proceeding under the basis of this being site search.
+
+++++++++++++++++++++++++++++++
+• • Keyword search:
+
+• • Customers need to find things on your website. Hopefully the
+search bar is very visible. They will type in a query. Removing
+the cruft (“and,” “the,” etc.), you are left with likely the
+keywords of their search. These are the important words used
+to find products on your website.
+
+++++++++++++++++++++++++++++++++++++
+• • Auto-suggest:
+
+• • Based on the keywords and phrases used, smart search
+engines will be able to find other keywords and phrases that
+are similar to the one that the customer entered.
+
+• • This will help guide them to the answer that they are looking
+for.
+
+++++++++++++++++++++++++++++++++++++++++++++
+• • Guided Navigation:
+
+• • This implies helping the customer reach the decision you
+want them to reach (likely resulting in a purchase).
+
+• • This technology is still up and coming and relatively expensive
+to do right.
+
+======================================================================================
+
+Upsell:
+
+• Visible on a product page.
+
+• This tells customers of more expensive or (hopefully)
+alternative choices to what they are looking at. This provides
+awareness of other options on your website.
+
++++++++++++++++++++++++++++++++
+• • Cross-selling:
+
+• After the customer has added the product to the cart, we do
+not want to show choices to what they have purchased. Doing
+so might lead them to reconsider their options.
+
+• Cross-selling involves showing the customer complementary
+products: ones that will make using the original product easier
+or more satisfying.
+
+
+==================================================================================
+
+
+SEO in ecommerce
+
+• • Far beyond the scope of this work, but, here’s the summary.
+
++++++++++++++++++++++++++++++
+• • Quality URL structure:
+
+• Don’t use numbers or IDs in the structure. Instead, use words.
+Not too many, but 75 characters or so in the url.
+
++++++++++++++++++++++++++++++++++++++++++
+• • Good information architecture:
+
+• This describes how your website is constructed.
+
+• What are the paths to the categories? How do they relate
+to the products? Is there any correlation? What about
+breadcrumbs? How do you expect people to flow through
+your website?
+
+• Are there well-organized sections of content?
+
++++++++++++++++++++++++++++++++++++++++
+• • Duplicate content:
+
+• Using rel=”canonical” to avoid duplicate content flags.
+
+• The canonical tag tells search engines which single URL is the
+source for that product.
+
+• Common within Magento will be a product in multiple
+categories, resulting in the same product page accessible
+via several URL paths (one for each category). If you don’t
+tell Google which URL is the “master” (vs. the duplicates),
+Google will pick one.
+
+• Ensuring that those canonical links exist.
+
+++++++++++++++++++++++++++
+• • Sitemap
+• Helps search engines find the pages on your website.
+
+====================================================================================================================================================================================================================
+
+1.2 SECURITY:
+
+• • User data security standards in different markets:
+
+• USA is one of the most lenient in the world.
+
+• EU data privacy states that you cannot store most any
+customer data outside of the EU. Used to have safe harbor
+agreement in place, but that no longer exists.
+
+• Canada just introduced very strict spam laws.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+• • PCI standards and processes: (payment card industry)
+
+• PCI SAQ (self-assessment questionnaire): a detailed piece
+of information to assess whether you and your website are
+following best security practices.
+
+• Cardholder data must not ever be stored or transmitted
+unencrypted.
+
+• Unencrypted cardholder data must not be seen by unqualified
+individuals.
+
+• Encrypted cardholder data is still subject to safety measures.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+• • PA-DSS / PCI-DSS rules and practices:
+
+• Every organization that handles credit cards needs to comply
+with PCI DSS (Payment Card Industry Data Security Standard).
+
+• Build and maintain a secure network.
+
+• Protect cardholder data.
+
+• Implement strong access control measures.
+
+• Ensure the maintenance of information security policies.
+
+• Vendors that make and sell payment applications need to
+meet PA DSS (Payment Application Data Security Standard).
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+SSL Usage in ecommerce
+
+• SSL when transmitting cardholder data is a must.
+
+• Preferably use TLS 1.2 but limited due to older browsers that
+no longer support that.
+
+• Browser vendors are pretty much forcing all sites to switch to
+https.
+
+SSL: Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client—typically a web server (website) and a browser, or a mail server and a mail client.
+
+https://www.entrustdatacard.com/pages/ssl
+
+=====================================================================================================================================================================================================================
+
+1.3 USER EXPERIENCE:
+
+• • Usability principles and issues in ecommerce
+
+• Beyond the scope of this study guide. Excellent resources:
+
+• Interface must be easy and quick to understand.
+
+• Best is that it doesn’t deviate too much from other websites /
+industry leaders such as Amazon.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+• • Building a good user experience in ecommerce — best practices
+
+• Maximum of 5 options
+
+• Important to give the user context of their position on the
+website
+
+• Clear header navigation (with possible drop-down menus)
+
+• Breadcrumbs
+
+• Good detail in footer
+
+=====================================================================================================================================================================================================================
+
+1.4 LAWS AND REGULATIONS:
+
+• • Disability compliance issues
+
+• • Privacy
+
+=====================================================================================================================================================================================================================
+
+1.5 SYSTEM DEVELOPMENT:
+
+• • Agile, SCRUM, and Waterfall
+
+• Waterfall: working toward a once-in-a-long time release
+schedule.
+
+• Agile and Scrum are very similar.
+
+• Agile is a complete software development cycle. Usually
+focuses on smaller increments.
+
+• Scrum is based around a sprint (a set period of time for
+work to get done). Commitments are made to ensure that
+the work is completed.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+• • Basic terms and core constituents of system development life
+cycles:
+
+• Identify Current Problems: understanding problems.
+Customers often do this on their own, although it is good to
+get a second opinion.
+
+• Plan: developing a roadmap for getting the problem solved.
+
+• Design: architecting the solution: what pieces need to be built.
+
+• Build: writing the code to solve this problem.
+
+• Test: assigning to QA to ensures that everything works as
+expected.
+
+• Deploy: deploying the update.
+
+• Maintain: starting the cycle over again.
+
+====================================================================================================================================================================================================================
+
+1.6 OMNICHANNEL:
+
+• • Complex inventory management:
+
+• Means maintaining inventory in multiple locations. This could
+take into account warehousing, retail locations and possibly
+drop-shipped inventory quantities.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+• •How to handle out-of-stock merchandise:
+
+• Online: can drop-ship from suppliers or distributors.
+
+• Retail / brick-and-mortar: endless aisle systems allow
+customers to order items that are out of stock. This will not
+eliminate the problem of someone seeing that a product
+is not available anymore and leaving, but it might help in
+some situations.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+• • Drop ship:
+
+• When the manufacturer or another company ships the
+product. This can reduce warehousing needs but will
+significantly eat into profits.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+• •Buy online / ship to store:
+
+• The latest trend. This can be an effective means of keeping
+customers in the store. While it might not save the company
+any money (as they still often have to ship it), they can expect
+more people to make purchases while in the store. Walmart
+has seen this enough that they have offered steep discounts
+on certain Site-To-Store purchases.
+
+====================================================================================================================================================================================================================
+
+1.7 DATA ANALYTICS AND TESTING:
+
+• • Google Universal Analytics:
+
+• Probably the most powerful web analytics platform on the
+internet (free). This platform helps track and correlate much
+information about visitors on the website and their purchases.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+• •A/B Testing:
+
+• Shows customers the A (original) or B (updated) version. This
+is good to see what users prefer more: which performs better
+and achieves more goal completions.
+
+• The next step is Multivariate testing. This can pit multiple
+versions against each other to find a winning combination.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+• • Optimization:
+
+• The process of continually editing and working with the
+website to increase sales.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+• •Personalization:
+
+• Ways to make the website be unique to a user. This could be
+things like using the customer’s name, showing them products
+that they are interested in (based on other purchases),
+or adjusting sales emails to how they have responded to
+previous emails.
+
+=====================================================================================================================================================================================================================
+
+1.8 TAXES:
+
+• • VAT:
+
+• Value Added Tax
+
+• Assessed at different times in the production process.
+
+• Sales tax is assessed on the final value of a sale.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+• • Digital VAT:
+
+• Tax assessed on software as a service sales.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+• •In-state and out-of-state:
+
+• In-state: selling from one state in the US (such as KS) to
+someone in the same state.
+
+• Out-of-state: selling from one state in the US (such as KS) to
+someone outside of the state, such as MO.
+
+• Cross-border: Selling from one country into another.
+
+
+
+
+
+
+
+
