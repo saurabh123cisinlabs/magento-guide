@@ -1,3 +1,9 @@
+                  
+
+====================================================================================================================================================================================================================                                                      
+                                                               ++++++++++++++++++++++++++++++++++++ ECOMMERCE ++++++++++++++++++++++++++++++++++++++++++
+
+
 Link: https://inviqa.com/blog/magento-2-tutorial-how-to-create-command-line-module
 
 http://devdocs.magento.com/guides/v2.0/extension-dev-guide/build/di-xml-file.html
@@ -727,6 +733,224 @@ It was designed to protect online privacy, by making consumers aware of how info
 It started as an EU Directive that was adopted by all EU countries in May 2011. The Directive gave individuals rights to refuse the use of cookies that reduce their online privacy. Each country then updated its own laws to comply. In the UK this meant an update to the Privacy and Electronic Communications Regulations.
 
 =======================================================================++++++++++++++++++++++++++++++++++++==========================++++++++++++++++++++++++++===========================+++++++++++++++++++=======
+
+                                                         ++++++++++++++++++++++++++++++++++++=MAGENTO 2 ARCHITECTURE ++++++++++++++++++++++++++++++++++++++++++
+
+2.1 BASIC CONCEPTS: MVC, TEMPLATES AND LAYOUTS, OPEN SOURCE: 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Architecture in Magento 2: What is Magento architecture based on, and how does Magento architecture affect the Magento 2 application?
+
+• • Magento is built on the MVC idea. Model / View / Controller.
+
+• • Model is the data. Ultimately, the model concept goes way
+deeper than this into data storage and retrieval.
+
+• • View is how the data is presented. This is the HTML and CSS
+side.
+
+• • Controller is the link between the model (data) and the view.
+This provides the business logic for what data to show where.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Database sharding and Varnish caching:
+
+• • (EE only) Sharding is splitting up a database into multiple “shards” (think of a broken glass).
+
+• • This allows for performance gains and scalability in different configurations. The database can be split into different segments: checkout orders and products.
+
+• • This also allows data to be backed up, data analysis without affecting the master database, and scalability.
+
+• • Varnish caching
+
+• Varnish is a reverse-proxy caching engine.
+
+• It sits in front of the web server (apache or nginx) and if a request is cached, it will return that. This results in a very low latency caching engine. Response times are often sub 200ms.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Templates and layouts in Magento 2: Basic responsibilities and roles when executing Magento code
+
+• • Templates contain the HTML; layouts are XML files that contain instructions for what to show, where, and details for how to show it.
+
+• • The layout XML files are merged together to form one set of instructions per page. This gives tremendous capabilities for customizing a website.
+
+• • Templates are PHP and HTML. They accept PHP objects and other data and render them as HTML.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Extending Magento 2 functionality with a code change or enabling an extension—basic concepts and process steps: 
+
+• • To extend Magento, the first thing is to determine what needs to be
+changed. This specification is signed off by the customer and work
+can begin.
+
+• • It is important that modules don’t get too big. This makes them
+difficult to manage and maintain. Follow the Single Responsibility
+Principle.
+
+• • After registration.php and etc/module.xml are present, you can run
+bin/magento module:enable ((MODULE NAME)).
+
+• • This turns the module on, and development can continue.
+
+• • You will likely have to run bin/magento setup:upgrade and bin/
+magento setup:di:compile.
+
+• • Once the module is complete, you would commit it, have it peer-
+reviewed, and ensure that it passes QA and then deploy to
+production.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Configuring site design using options found in the admin under Content > Design > Configuration:
+
+• • This was a much improved area in Magento 1 over Magento 2. The
+design configuration is found in Content > Design > Configuration.
+
+• • Select the store / theme combination that you wish to work with,
+and click Edit.
+
+• • This pretty much replaces the System > Configuration > Design
+area. It is specific to the theme, and makes much more sense to
+place in this location.
+
+• • Adding configuration to this area is still not the easiest.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Installing and enabling/disabling Magento 2 extensions:
+
+• • It is very important to first review the code (line-by-line) of each
+extension installed. I’m always amazed at how many security
+vulnerabilities and sending requests back to the module
+developer’s servers (phoning home) that I find.
+
+• • Installing the module is very easy (instructions for a one-off
+Magento instance not connected to builds or anything):
+
+• • SSH into the server
+
+• • Copy the new module files
+
+• • bin/magento module:enable ((MODULE NAME)) — omitting
+this will enable all modules
+
+• • bin/magento setup:upgrade
+
+• • bin/magento setup:di:compile
+
+• • bin/magento setup:static-content:deploy
+
+• • bin/magento cache:clean
+
+===================================================================================================================================================================================================================
+
+2.2 MAGENTO APIS AND THIRD-PARTY INTEGRATION: 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Types of API
+
+• • REST and SOAP
+• • Rest is URL and HTTP code based. SOAP is XML based.
+
+API authentication
+
+• • OAuth 1.0a (why not 2?)
+• • Mobile applications can use tokens
+• • Administrators and customers can use login credentials (which are converted into a token)
+
+API users
+• • These are the same as a user if you are using token-based authentication.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Differences between Magento 1 and Magento 2 integration options:
+
+• • Magento 2 is much more streamlined. With Magento 1, you worked
+with a unique set of users for the API. There were also unique
+permissions with Magento 1 that are now no longer apart of 2.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Third-party integration with Magento 2 CE and EE
+• • Enterprise has the following additional API endpoints:
+• • CustomerBalance
+• • GiftCardAccount
+• • GiftRegistry
+• • GiftWrapping
+• • Reward
+• • RMA
+
+====================================================================================================================================================================================================================
+
+2.3 MAGENTO WEBSITES, STORES, AND STORE VIEWS:
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Website (store_website table), store (store_group table), and store view (store table) configuration:
+
+• • There are three layers of customization for configuration,
+categories, products, and CMS features. Many Magento
+installations have just one website, store, and store view.
+
+• • Website: represents a unique domain name. This is the
+“parent” of the whole system. It allows you to maintain
+different lists of customers and different product pricing.
+Products are assigned to a website.
+
+• • Store: represents groupings of store views. This is not used
+much in products or categories.
+
+• • Store view: often a different language but could be a different
+store. This is used to configure pricing, attributes, and more
+for categories and products.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+The application of scope to websites, stores, and store views:
+
+• • Say you have three brands: Widgets, Headphones, and Stuffed
+Animals available in English and Spanish. You could put all three on
+unique websites; you can switch a store on a website; and you can
+also switch the language on a website.
+
+• • Websites and store groups are similar in functionality. They give
+flexibility for how one wants to set up a site.
+
+• • Store > Configuration is specified in either the global, website or
+store view scope.
+
+• • Product details are specified in the global, website or store view
+scope.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++===
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
