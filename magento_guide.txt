@@ -1554,11 +1554,59 @@ What is the process of creating layered navigation (including category creation 
 What are the different ways in which an Admin user can update product inventory?
 
 • • Modify product, and choose Advanced Inventory.
+
 • • Mass edit inventory:
-• • Check the box next to a product in the Products > Catalog grid.
-• • Advanced Inventory tab
-• • Set the QTY.
-• • Keep in mind that this doesn’t adjust the inventory, rather it will reset it. This would be useful in very few and limited cases.
+
+• Check the box next to a product in the Products > Catalog grid.
+• Advanced Inventory tab
+• Set the QTY.
+• Keep in mind that this doesn’t adjust the inventory, rather it will reset it. This would be useful in very few and limited cases.
+
+• • API integration:
+
+• GET /V1/stockItems/:productSku
+• PUT /V1/products/:productSku/stockItems/:itemId
+• GET /V1/stockItems/lowStock/
+• GET /V1/stockStatuses/:productSku
+
+• • CSV file import
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How can you display associated products in the cart and on the product page?
+
+• • Displaying associated products in the cart is set through cross-sells. They are selected from the most recently added product to the cart.
+
+• • Displaying products on the product page is done through upsells and related products.
+
+• • Both of these are set on a product-by-product basis in Products > Catalog > Product. These options are chosen in the Related Products, Up-Sells and Cross-Sells section.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How can you create page redirects for specific search requests?
+
+• • Marketing > Search Terms > Add New Search Term
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Can a customer submit a JPG image with a product review?
+
+• • Not by default. There are ways to link to an image, but they cannot upload an image.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What are the options for displaying a product video?
+
+• • You can insert it into the product description.
+• • You can add it using the Magento product video functionality.
+
+=====================================================================================================================================================================================================================
+
+3.4 SHOPPING CART:
+
+
+
+
 
 
 
