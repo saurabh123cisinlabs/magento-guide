@@ -1372,6 +1372,211 @@ url key)
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+Sections of the Admin:
+
+• • Dashboard: the entry-point into the system
+• • Sales: orders, invoices, and shipping
+• • Products: management of the product catalog
+• • Customers: customer management
+• • Marketing: promotions, SEO, and user reviews
+• • Content: CMS pages and blocks
+• • Reports: Magento reports on sales and customer interaction
+• • Stores: Configuration, store setup, attributes, customer groups, taxes and currency
+• • System: Cache management, import/export, permissions
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+User roles and role scope:
+
+• • User roles are groupings of allowed functionality.
+• • Magento ACL is very granular to grant or deny access to most every area of the system.
+• • Set up a role to say where users can be allowed or denied.
+• • Easy to assign or change user access.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Grids and views
+
+• • Two types of Magento grids: UI component and old style.
+
+• • Many grids have a field at the top for filtering that column (better UX than UI component style).
+
+• • UI component type (products and customers):
+
+• Filtering link > section for determining what to see
+• More flexible and editable
+• Allows for setting bookmarks
+
+• • Old style:
+• Essentially the same as Magento 1, but a different theme. 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How is role scope used?
+
+• • To limit admin access to specific areas of a system. An example is
+a CSR where you might not want them to have access to system
+configuration. You might only give them access to the Sales and
+Customers area.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How can you customize a grid display for your own purposes?
+
+• • You can:
+
+• Drag/drop columns to reorder them
+• Show/hide columns
+• Save specific column configurations for later access.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+In which section of the Admin are most initial configuration options located?
+
+• • Store > Configuration
+
+=====================================================================================================================================================================================================================
+
+3.2 CONTENT STAGING AND PREVIEWS:
+
+Staging timelines
+
+• • Provides context for when changes are made (or will be made) to content. Viewing staged content
+
+How do you set a banner to appear on a specific date?
+
+• Clicking “Schedule New Update” on a product page.
+
+How do you preview the result of setting content to appear at a future
+time?
+
+• Clicking “Preview” next to the schedule content change.
+
+=====================================================================================================================================================================================================================
+
+3.3 CATALOG:
+
+Product types
+
+• • Simple
+• • Configurable
+• • Grouped
+• • Virtual
+• • Bundle
+• • Downloadable
+• • Giftcard (EE only)
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Product creation
+
+• • Products > Catalog > Add New Product
+• • Enter the required fields.
+• • Make sure to switch Enabled to Yes and assign a website (if in multi-store mode).
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Product attributes and attribute sets
+
+• • Attributes and attribute sets are configured in Store > Attributes and Store > Attribute Sets
+
+• • Attributes:
+
+• Describes products in a structured and defined, yet very flexible way.
+• The details are stored in tables associated with the particular data type: text, varchar, int, decimal. With this, they can be simple text entry or a select list (used with configurable products).
+• You can assign a scope to attributes whether they are for the website or store view.
+
+• • Attribute sets:
+
+• A set of attributes.
+• These attributes sets allow attributes to be grouped into “folders.”
+• They are especially useful for different types of products. For example, a t-shirt will need different attributes than a microphone.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Categories
+
+• • Lists of products on the frontend.
+
+• • Can display text and customize the display of these products.
+
+• • Products can be viewed in list (with the short description) or grid mode.
+
+• • Product can be filtered by attributes (layered navigation)
+
+• • Products can be sorted and the number of products per page can be controlled.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Visual Merchandiser:
+
+• • Tool to position products in the category listing. 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What are the different product types in Magento 2 Enterprise Edition?
+
+Gift card is only available in EE. 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What are the minimum attributes to create a simple product?
+
+• Product Name
+• SKU
+• Price
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What is the product attribute set used for in Magento 2? Can different product types use the same attribute set?
+
+• • Attribute sets are a grouping of attributes. They are used to specify details about unique types of products. 
+For example, one might be a Shirt or Apparel category (with a size attribute) whereas another type might be Microphone (with a connection type attribute).
+
+• • Yes, multiple product types can use the same attribute set.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What is the process of creating layered navigation (including category creation and attributes, product attribute types, and product-category associations)?
+
+• • Create a category to display t-shirts on the front end.
+• • Ensure that “Is Anchor” is set to “Yes.”
+• • Create an attribute called “size:”
+• • Type is a Dropdown list.
+• • Values are Small, Medium, and Large.
+• • You must also ensure that “Use in Layered Navigation” in Storefront Properties is set to Filterable (with results).
+• • You can change the order that this attribute is visible with the Position attribute.
+• • Create three products and specify the size attribute for each: each one corresponding to a unique item in the list above.
+• • Assign those products to the category.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What are the different ways in which an Admin user can update product inventory?
+
+• • Modify product, and choose Advanced Inventory.
+• • Mass edit inventory:
+• • Check the box next to a product in the Products > Catalog grid.
+• • Advanced Inventory tab
+• • Set the QTY.
+• • Keep in mind that this doesn’t adjust the inventory, rather it will reset it. This would be useful in very few and limited cases.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
