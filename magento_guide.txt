@@ -918,16 +918,523 @@ Animals available in English and Spanish. You could put all three on
 unique websites; you can switch a store on a website; and you can
 also switch the language on a website.
 
-• • Websites and store groups are similar in functionality. They give
-flexibility for how one wants to set up a site.
+• • Websites and store groups are similar in functionality. They give flexibility for how one wants to set up a site.
 
-• • Store > Configuration is specified in either the global, website or
-store view scope.
+• • Store > Configuration is specified in either the global, website or store view scope.
 
-• • Product details are specified in the global, website or store view
-scope.
+• • Product details are specified in the global, website or store view scope.
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++===
+• • Websites: are often a unique domain name or a brand. Payment and shipping methods are determined in this scope.
+
+• • Store (groups) can be also a unique domain name or brand but they fit inside of a website. 
+** Root categories are associated with a store. 
+** No store configuration values are set on this level.
+
+• • Store (views) is what your customers browse. This shows products and is themed. 
+Often there are switchers to change language (from English to Spanish). 
+There will also be links to go to the Widgets’ or Headphones’ websites. 
+It is important to keep cookies in consideration if you want products to be shoppable across all categories. 
+Most store configuration values specified at this level are related to names and very few features can be enabled.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Display of product catalogs in websites, stores, and store views:
+
+• • If a Magento installation is NOT in single-store mode (Stores > Configuration > General > Single-Store Mode):
+
+• Products are assigned to a website. If a product is not assigned to a website, it will not be visible on the website.
+
+• You can also change the visibility and status for a store view to affect whether a product is visible for a store view or not.
+
+• You can change title, description, etc. on a website or store view basis (not for a store).
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Administration of websites, stores, and store views: 
+
+• • Found in Stores > All Stores area.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Localization, taxes and pricing in websites, stores and store views:
+
+• • Again, these are customized in websites and store views (but not for a store).
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Product attribute scope:
+
+• • Applies to either global (everything) or a store view. If it is global, store view will not change the value. If the attribute’s scope is set to be store view, then it will be dependent on the store’s scope. 
+    If you look at the table, store_id is mapped to the store table.
+
+=====================================================================================================================================================================================================================
+
+2.4 MAGENTO EDITION DIFFERENCES (ENTERPRISE, COMMUNITY):
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Advantages and disadvantages of each edition:
+
+• • If a customer has the money, Enterprise is the way to go. There are a lot of pre-built modules that will save development time. 
+They are tested and stable. Enterprise has Magento support whereas Community doesn’t.
+
+• • In Magento 1, the difference was a few modules and poor support.
+Magento has been fixing the support and adding to the modules.
+
+• • Advantages of EE:
+
+• Database scalability
+• Advanced search
+• Job queue
+• Google tag manager (can easily add this into CE)
+• Additional admin logging
+• Customer attributes
+• Support
+• Additional modules to better customer experience
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Cache, indexing, search, and other feature differences:
+
+• • There is no difference in CE vs EE caching other than the use of message queues (with RabbitMQ)
+
+• • Same with indexing
+
+• • Solr is available but will be changed out to ElasticSearch
+
+====================================================================================================================================================================================================================
+
+2.5 MAGENTO CLOUD:
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Features and functions: 
+
+• • Magento’s Enterprise hosting solution. According to people I have talked to at Magento, this allows a single source of responsibility for anything happening at an application or hosting level. 
+They wrote the software, and they should be the best ones to keep the software running.
+
+• • Contains three areas:
+
+• Integration: testing and development, up to 8 unique branches in different environments.
+• Staging: includes database, environment variables, configurations and Fastly.
+• Production: a three node high-availability system.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Advantages:
+
+• • Magento manages it. They have invested in making it fast and a good platform to build on.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Differences from other Magento editions:
+
+• • This is an additional product (per my understanding). You pay the yearly fee for EE and the hosting on top of it.
+
+====================================================================================================================================================================================================================
+
+2.6 MAGENTO SOLUTIONS:
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Bluefoot
+• • Bluefoot is a new CMS system that has been integrated into EE. It gives a high-quality WYSIWYG editor with drag and drop widgets. 
+It makes creating pages much more easy and intuitive.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+B2B
+
+• • A new package for 2.2 that makes B2B transactions more streamlined.
+
+• • It provides a system for quoting, managing groups of customers, and better inventory management.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Magento Business Intelligence:
+
+• • A new system for creating high-quality and informative reports.
+
+• • The heartbeat of how your store is functioning. A Google Analytics for the business side of a company.
+
+====================================================================================================================================================================================================================
+
+2.7 SEARCH ARCHITECTURE:
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Solr:
+
+• • An open source search platform. Right now, Magento EE natively integrates with this.
+
+• • There is some configuration needed.
+
+• • Fairly easy to set up and produces lightning fast and relevant results.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Elasticsearch:
+
+• • Now supported in Magento EE 2.1.
+
+• • From a features standpoint, fairly similar to Solr
+
+• • Appears to be somewhat more popular than Solr
+
+====================================================================================================================================================================================================================
+
+2.8 INFRASTRUCTURE REQUIREMENTS:
+
+Caching, Varnish, Redis, Memcached
+
+• • Magento can function with just PHP, Apache / Nginx, and MySQL.
+
+• • For better performance, Varnish is tightly integrated.
+
+• • Redis can be used to store customer sessions and caching (faster than the file system).
+
+• • Memcached is also available but seems that industry support for this is waning.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Sessions:
+
+• • Default is stored on the file system. This can slow down response times.
+
+• • Memcached and Redis are also available.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Database sharding:
+
+• • There are some development limitations regarding this:
+
+• • Cannot write directly to the database (need to use the database interface instead, which is best practice anyway).
+
+• • Cannot use JOINs that affect the sales or quote databases.
+
+• • Use foreign keys to tables in the checkout sales or main databases.
+
+• • Should configure the split database solution before putting Magento into production. After is more difficult.
+
+• • You must separately / manually backup the other databases when using Magento’s DB backup (which is terrible)
+
+=====================================================================================================================================================================================================================
+
+2.9 COOKIES:
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Cookie use and handling:
+
+• • Cookies are used to identify the computer (shopper) to the server. PHP looks at the frontend cookie and returns the session information to Magento.
+
+• • Not saving cookies effectively renders the purchasing part of Magento useless. However, localStorage would now be somewhat of an option.
+
+
+===================================================================================== QUESTIONS ====================================================================================================================
+
+=> What are the unique advantages of Magento 2 architecture when building a site?
+
+• • Magento is a powerful ecommerce platform.
+
+• • It is very flexible and customizable.
+
+• • It comes as a functioning system. With just a little setup and configuration, you can receive orders and fulfill them.
+
+• • When you need additional features added, Magento offers the ability to reach deep into the system and change most every aspect of how it functions.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What are the two methods available in the Magento 2 Admin (in the Content section) to change the design of a site?
+
+• • Content > Configuration
+
+• For each store view, you can change the theme and the settings available for use with it.
+
+• • Content > Schedule
+
+• You can change the theme for a specified period of time. This might apply to a seasonal design update. This is not used as often.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> How can you change the layout of catalog pages using Magento 2 Admin functionality?
+
+• • Products > Catalog > Choose Product > Design > Layout:
+
+• • You can change the style of layout: some of the default options are 1 column, 2 columns with left sidebar, 2 columns with right sidebar, 3 columns and text.
+
+• • You can determine where the product options display. Normally, this is left as the default.
+
+• • You can specify layout update XML. While this might seem handy, we have found this gets in the way more often than not as a hack (if used for multiple or many products).
+ It should be only used for a one-off update.
+
+• • The reason is that if you are making changes here for a number of products, likely those changes should be made into the site’s code instead of here. 
+These are easy to miss later resulting in additional developer time trying to find what is making the change.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> How is product data constructed in Magento 2 (product attributes, inventory, price, images, etc.)?
+
+• • Product attributes are pulled from either the store view or the default (0) store if nothing is specified.
+
+• • Inventory is associated with a specific website.
+
+• • Tier pricing is associated with a website, but flat product pricing can be changed on a store view basis.
+
+• • Images are associated with a store.
+
+• • This information is pulled out of the database and is rendered on the frontend.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> When does product inventory change (decrease) during the ordering process? How can an administrator control the inventory change?
+
+• • When an order is submitted, the inventory for that product is decremented by the quantity ordered. Keep in mind that this does not reflect the quantity on hand. 
+In accounting terms the quantity in Magento’s inventory is really the quantity available (to be sold).
+
+• • Administrators can change this in product management, in the quantity field.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What is RMA in Magento 2, and what are the RMA types?
+
+• • Return Merchandise Authorization. This allows a store to know what products are being returned and possibly offer return labels.
+
+• • The three RMA types are: Store Credit, Refund, Exchange:
+
+• • The customer can request one of these types when they request an RMA from the Account Dashboard (within the completed order).
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What are the required attributes for creating a CMS page using Magento Admin functionality?
+
+• • Page title (provides the default value for the meta title tag and the
+url key)
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What is the process for creating a product, and which catalog data is used in this process?
+
+• • Products > Catalog > Add new product.
+
+• • If you select the drop-down menu, you can choose what type of product to create.
+
+• • You must specify:
+
+• Any custom attributes that have been marked as required without a default value.
+• Price
+• Product Name
+• SKU
+
+• • It is good to specify:
+• Product image
+• Description
+• Short description
+• SEO-related fields, such as Meta Title and Meta Description
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> How is the price defined for a product, and what methods are available for changing product price using Magento 2 Admin functionality?
+
+• • Simple pricing is set in the Price field.
+
+• • You can also update pricing in the Advanced Pricing link:
+
+• Here you can set tier pricing for customer groups and specific quantities.
+
+• • Via Mass Action update on the catalog grid.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What marketing and merchandising features are available only in Magento 2 Enterprise Edition?
+
+• • Personalized content
+• • Improved merchandising
+• • Bluefoot CMS
+• • Reward / loyalty points
+• • In-Store Credits
+• • Gift Registry and Cards
+• • Private Sales
+• • Bulk Ordering
+• • Comprehensive:
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What payment methods and payment functionality are available only in Magento 2 Enterprise Edition?
+
+• • Cybersource
+• • eWAY
+• • Worldpay
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What are the differences between Elasticsearch and Solr?
+
+• • Elasticsearch allows multiple types of documents in an index. Solr requires you to do the work at the application level.
+
+• • Elasticsearch is more configurable on the fly.
+
+• • Elasticsearch supports complex nested types.
+
+• • Solr supports grouping, but Elasticsearch doesn’t.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What is caching, and why is it important?
+
+• • Caching saves a snapshot of pre-generated, filtered or calculated data.
+
+• • This saves the generation time, resulting in faster responses.
+
+• • Faster responses mean less wait time for a customer (or admin) on the website.
+
+• • Less wait time means happier people.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> When would you recommend sharding a database?
+
+• • In very large-scale deployments. This would allow the databases to be separately tuned, and some can then be used in read-only mode (like the catalog tables for the frontend).
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What is Bluefoot?
+
+• • Bluefoot is a CMS package that adds drag & drop capabilities to the admin editing experience.
+
+• • It is also very extensible to add new types of elements.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What functions are included in B2B? In Magento Business Intelligence?
+
+• • B2B
+
+• Custom quotes / pricing
+• Unique catalogs for customers
+• Quick order
+• Credit limits
+• Loyalty
+• Requisition lists
+
+• • Magento Business Intelligence
+
+• Replicates store data and sends it to Magento
+• Transforms data and analyzes it
+• Creates new joins and reporting metrics
+• Goal is to be the one connected source for a business’ ecommerce data.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> How are cookies used in Magento 2?
+
+• • They are used to associate a customer (or admin) with PHP’s session storage. This session storage contains the transient information about this person.
+
+• • They are used also to transfer certain types of information to the user. In other words, they store certain types of transient data that is related to that user.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> Which customer data is saved in cookies, and how is it used in the storefront using Magento native functionality?
+
+• • “Cart”: the association with the customer’s shopping cart
+• • “Compare”: the items in the customer’s Compare Products list
+• • “Customer”: an encrypted version of the shopper’s customer ID
+• • “Customer_Auth”: Whether or not the customer is logged into the store
+• • “Customer_Info”: Encrypted version of the customer’s group
+• • “Frontend”: customer’s session ID (most important cookie)
+• • “Last_Category”: last category visited by the shopper
+• • “Last_Product”: the most recent product viewed by a shopper
+• • “Persistent_Shopping_Cart”: a link to information about the shopper’s cart and viewing history
+• • “RecentlyCompared”: Items recently compared by the shopper
+• • “STF”: information on products shopper has emailed to friends
+• • “Store”: The store view or language chosen by the shopper
+• • “User_Allowed_Save_Cookie”: whether or not the customer allows cookies to be saved
+• • “Viewed_Product_Ids”: Products recently viewed by the shopper
+• • “Wishlist”: An encrypted list of products added to the shopper’s wishlist
+• • “Wishlist_Cnt”: The number of items in the shopper’s wishlist
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> What is Swagger, and how is it used in Magento?
+
+• • Swagger is an API framework.
+
+• • It provides a standardized way to define and document API access.
+
+• • Magento uses it for their REST API 
+
+=====================================================================================================================================================================================================================
+
+                                 ========================================================= FEATURES AND FUNCTIONALITY =========================================================================
+
+3.1 MAGENTO ADMIN: CONCEPTS, FEATURES, AND USAGE
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
