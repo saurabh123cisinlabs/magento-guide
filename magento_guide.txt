@@ -144,6 +144,34 @@ Module-specific translations should be placed in this folder. That way, on a per
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+Model
+
+Models have changed considerably in Magento 2, but that is for another guide. For now, all we need to know is that models are used for data modelling.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Test
+
+All good modules need tests and they should be in the module’s folder so they can be run against any build. This folder includes the unit integration and, where possible, functional tests. Magento 2 comes with lots of tests that can be used for reference and, with the use of Dependency Injection, it makes using testing frameworks more attainable.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Setup
+
+The install and upgrade process in Magento 2 is different than Magento 1. For now just know that if you want to run scripts to install or upgrade both data and schemas, they are placed in here
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+View
+
+This folder is new for Magento 2. In Magento 1 we were used to adding our view files or template in the base or theme directory. However, in Magento 2 we place our templates, JS and CSS (LESS) with the module, so there is no longer a complex process of distributing modules. However, theme-specific changes are still added within the app/design folder. This is only used for setting some default templates/ styles when distributing our modules.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Composer.json
+
+Not all modules will require a composer.json file. If you never plan on using this module on any other project, it is fine to omit it.
+
 
 
 
