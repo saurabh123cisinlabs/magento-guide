@@ -1,0 +1,1239 @@
+                                 ========================================================= FEATURES AND FUNCTIONALITY =========================================================================  30% 
+
+3.1 MAGENTO ADMIN: CONCEPTS, FEATURES, AND USAGE
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Sections of the Admin:
+
+• • Dashboard: the entry-point into the system
+• • Sales: orders, invoices, and shipping
+• • Products: management of the product catalog
+• • Customers: customer management
+• • Marketing: promotions, SEO, and user reviews
+• • Content: CMS pages and blocks
+• • Reports: Magento reports on sales and customer interaction
+• • Stores: Configuration, store setup, attributes, customer groups, taxes and currency
+• • System: Cache management, import/export, permissions
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+User roles and role scope:
+
+• • User roles are groupings of allowed functionality.
+• • Magento ACL is very granular to grant or deny access to most every area of the system.
+• • Set up a role to say where users can be allowed or denied.
+• • Easy to assign or change user access.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Grids and views
+
+• • Two types of Magento grids: UI component and old style.
+
+• • Many grids have a field at the top for filtering that column (better UX than UI component style).
+
+• • UI component type (products and customers):
+
+• Filtering link > section for determining what to see
+• More flexible and editable
+• Allows for setting bookmarks
+
+• • Old style:
+• Essentially the same as Magento 1, but a different theme. 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How is role scope used?
+
+• • To limit admin access to specific areas of a system. An example is
+a CSR where you might not want them to have access to system
+configuration. You might only give them access to the Sales and
+Customers area.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How can you customize a grid display for your own purposes?
+
+• • You can:
+
+• Drag/drop columns to reorder them
+• Show/hide columns
+• Save specific column configurations for later access.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+In which section of the Admin are most initial configuration options located?
+
+• • Store > Configuration
+
+=====================================================================================================================================================================================================================
+
+3.2 CONTENT STAGING AND PREVIEWS:
+
+Staging timelines
+
+• • Provides context for when changes are made (or will be made) to content. Viewing staged content
+
+How do you set a banner to appear on a specific date?
+
+• Clicking “Schedule New Update” on a product page.
+
+How do you preview the result of setting content to appear at a future
+time?
+
+• Clicking “Preview” next to the schedule content change.
+
+=====================================================================================================================================================================================================================
+
+3.3 CATALOG:
+
+Product types
+
+• • Simple
+• • Configurable
+• • Grouped
+• • Virtual
+• • Bundle
+• • Downloadable
+• • Giftcard (EE only)
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Product creation
+
+• • Products > Catalog > Add New Product
+• • Enter the required fields.
+• • Make sure to switch Enabled to Yes and assign a website (if in multi-store mode).
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Product attributes and attribute sets
+
+• • Attributes and attribute sets are configured in Store > Attributes and Store > Attribute Sets
+
+• • Attributes:
+
+• Describes products in a structured and defined, yet very flexible way.
+• The details are stored in tables associated with the particular data type: text, varchar, int, decimal. With this, they can be simple text entry or a select list (used with configurable products).
+• You can assign a scope to attributes whether they are for the website or store view.
+
+• • Attribute sets:
+
+• A set of attributes.
+• These attributes sets allow attributes to be grouped into “folders.”
+• They are especially useful for different types of products. For example, a t-shirt will need different attributes than a microphone.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Categories
+
+• • Lists of products on the frontend.
+
+• • Can display text and customize the display of these products.
+
+• • Products can be viewed in list (with the short description) or grid mode.
+
+• • Product can be filtered by attributes (layered navigation)
+
+• • Products can be sorted and the number of products per page can be controlled.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Visual Merchandiser:
+
+• • Tool to position products in the category listing. 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What are the different product types in Magento 2 Enterprise Edition?
+
+Gift card is only available in EE. 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What are the minimum attributes to create a simple product?
+
+• Product Name
+• SKU
+• Price
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What is the product attribute set used for in Magento 2? Can different product types use the same attribute set?
+
+• • Attribute sets are a grouping of attributes. They are used to specify details about unique types of products. 
+For example, one might be a Shirt or Apparel category (with a size attribute) whereas another type might be Microphone (with a connection type attribute).
+
+• • Yes, multiple product types can use the same attribute set.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What is the process of creating layered navigation (including category creation and attributes, product attribute types, and product-category associations)?
+
+• • Create a category to display t-shirts on the front end.
+• • Ensure that “Is Anchor” is set to “Yes.”
+• • Create an attribute called “size:”
+• • Type is a Dropdown list.
+• • Values are Small, Medium, and Large.
+• • You must also ensure that “Use in Layered Navigation” in Storefront Properties is set to Filterable (with results).
+• • You can change the order that this attribute is visible with the Position attribute.
+• • Create three products and specify the size attribute for each: each one corresponding to a unique item in the list above.
+• • Assign those products to the category.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What are the different ways in which an Admin user can update product inventory?
+
+• • Modify product, and choose Advanced Inventory.
+
+• • Mass edit inventory:
+
+• Check the box next to a product in the Products > Catalog grid.
+• Advanced Inventory tab
+• Set the QTY.
+• Keep in mind that this doesn’t adjust the inventory, rather it will reset it. This would be useful in very few and limited cases.
+
+• • API integration:
+
+• GET /V1/stockItems/:productSku
+• PUT /V1/products/:productSku/stockItems/:itemId
+• GET /V1/stockItems/lowStock/
+• GET /V1/stockStatuses/:productSku
+
+• • CSV file import
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How can you display associated products in the cart and on the product page?
+
+• • Displaying associated products in the cart is set through cross-sells. They are selected from the most recently added product to the cart.
+
+• • Displaying products on the product page is done through upsells and related products.
+
+• • Both of these are set on a product-by-product basis in Products > Catalog > Product. These options are chosen in the Related Products, Up-Sells and Cross-Sells section.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How can you create page redirects for specific search requests?
+
+• • Marketing > Search Terms > Add New Search Term
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Can a customer submit a JPG image with a product review?
+
+• • Not by default. There are ways to link to an image, but they cannot upload an image.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What are the options for displaying a product video?
+
+• • You can insert it into the product description.
+• • You can add it using the Magento product video functionality.
+
+=====================================================================================================================================================================================================================
+
+3.4 SHOPPING CART:
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Pricing and tax display:
+
+• • Price is more or less straight-forward. It is either the price of the products or an aggregation of the products included by the listed product (configurable, grouped, bundled).
+
+• • Tax is much more complex. Magento accommodates VAT and sales tax.
+
+• • Tax Rounding Rules
+
+  • Unit price: Magento calculates the tax for each item and displays prices including tax.
+  
+   Total tax amount: Magento rounds the tax for each item before adding the tax totals together.
+
+  • Row total: Magento calculates the tax for each line (based on the row total field).
+
+  Total tax amount: Magento rounds the tax for each row and then adds them together.
+
+  • Total: tax is calculated for each item and tax values are added to calculate the total unrounded tax amount for the order.
+    
+  Total tax amount: rounding is then applied to the total tax amount.
+
+• • Tax Cheatsheet: http://docs.magento.com/m2/ce/user_guide/tax/international-tax-guidelines.html
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Registered customers: 
+
+• • These are customer accounts found in the Magento system.
+
+• • They are stored in the customer_entity table, using the EAV data storage model.
+
+• • When a customer is logged in, all orders are associated with that customer’s account.
+
+• • Allows the customer to easily track the status of their orders.
+
+• • In addition, the following is also associated:
+
+• Addresses
+• Billing Agreements
+• Newsletter subscriptions
+• Product Reviews
+• Wish List
+
+• • Allows you to remember their address in an address book for future purchases, thus reducing more data entry (friction) in the checkout process.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Guest Customers:
+
+• • Guest customers can place orders (depending on the setting in Stores > Configuration > Sales > Checkout > Allow Guest Checkout).
+
+• • They will not be able to see their previous orders.
+
+• • Pretty much browses the site as an anonymous visitor. 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Wishlist shopping cart options:
+
+• • You can move a product to your Wishlist.
+• • Wishlist acts somewhat like an Amazon cart where you can move a product to be purchased later.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Gift shopping cart options:
+
+• • Choose how you want your package shipped.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How can you create a product discount to have it automatically added in the shopping cart?
+
+• • Marketing > Cart Price Rules > Add New Rule
+• • Set details: Coupon: “No Coupon”
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Can guest customers place orders?
+
+• • Yes, if Stores > Configuration > Sales > Checkout > Allow Guest Checkout is set to “yes” (default = “yes”) 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Can customers ship products to multiple different addresses using native Magento 2 functionality?
+
+• • Yes.
+
+• • By default, this is disabled in Stores > Configuration > Multishipping Settings > Allow Shipping to Multiple Addresses
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How can a customer register an account when placing an order?
+
+• • After checkout is complete.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Can shopping cart products be shared among different websites?
+
+• • There is some configuration that needs to be set up.
+
+• • Multi-store mode must be enabled and multiple websites must be present.
+
+• • The products must be shared across websites. This is done in the Websites section of the edit product page. This section is only active if multi-site is visible.
+
+• • Stores > Configuration> Customers > Customer Configuration > Account sharing options = Global
+
+• • Stores > Configuration > General > Web > Session Validation Settings > Use SID on Storefront = Yes
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What are the different shopping cart promotion types, and how can shoppers apply them as discounts?
+
+• • Can be automatically applied (Coupon: No Coupon). Or, you can create coupon codes. These can be limited to a certain number of uses per customer, with a valid to > from date.
+
+• • Percent of product price discount:
+
+• This takes a specified percentage off the product. Example:10% off Our Red T-Shirts.
+
+• • Fixed amount discount:
+
+• Takes a set dollar amount off of a product. Example: $5 off All Shirts.
+
+• • Fixed amount discount for whole cart:
+
+• Takes a set dollar amount off the cart. Buy a shirt from us and get $20 off your order.
+
+• • Buy X get Y free (discount amount is Y):
+
+• In other words, Buy X quantity of the product and get Y quantity for free.
+• Discount Qty Step (Buy X) is where you set the minimum number to purchase. Enter the quantity to get for free into the Discount Amount field.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How does the persistent shopping cart option work in Magento 2?
+
+• • It saves a link to the shopping cart for a year or more.
+
+• • Downside is that it requires a customer to log in to make a purchase. This means that that computer is locked down into the customer account, which is a drawback.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Does Magento 2 Enterprise Edition functionality allow merchants to contact shoppers about their abandoned shopping carts?
+
+• • Yes
+• • This is found in Marketing > Email Reminders
+
+====================================================================================================================================================================================================================
+
+3.5 PAYMENT METHODS:
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+PayPal:
+
+• • PayPal is a very popular means of payment.
+
+• • Magento is tightly integrated and offers this functionality out of the box.
+
+• • Included is:
+
+• PayPal Payment Advanced (PCI compliant), Pro and Standard
+• PayPal Payflow Pro and Link (PCI compliant).
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Native payment options:
+
+• • PayPal
+
+• • BrainTree
+
+• • Authorize.net
+
+• • Cybersource (EE-only)
+
+• • eWAY (EE-only)
+
+• • Worldpay (EE-only)
+
+• • Check / Money Order
+
+• Allows the order to be placed with no other payment information. Customer is emailed details usually as to where to send the check. Order is held until check is received.
+
+• • Cash on Delivery
+
+• Shipping carrier receives payment from the customer at the time of delivery.
+
+• • Bank Transfer
+
+• Allows the order to be placed with no other payment information. Details are shown on how to wire the money.
+
+• • Purchase Order
+
+• Similar to Check / Money Order except that it allows a PO Number to be entered.
+
+• • Zero Subtotal Checkout
+
+• Allows a $0 order to be placed. With a no-dollar-amount order, no payment information is necessary.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Braintree
+
+• • Reduces PCI compliance scope for merchants. Credit card details are encrypted and sent directly to Braintree instead of traveling through merchant servers.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Third-party payment
+
+• • PayPal
+• • Braintree
+• • Authorize.net
+• • Cybersource (EE only)
+• • eWAY (EE only)
+• • Worldpay (EE only)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Reward points
+
+• • The capability to reward customers with points good toward future merchandise purchases.
+
+• • This is configured in a Shopping Cart Price rule in the Actions tab: Add Reward Points.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What payment types are available in Magento 2 Enterprise Edition? Are all the same payment types available in Magento 2 Community Edition?
+
+• • PayPal
+• • BrainTree
+• • Authorize.net
+• • Cybersource (EE-only)
+• • eWAY (EE-only)
+• • Worldpay (EE-only)
+• • Check / Money Order
+• • Cash on Delivery
+• • Bank Transfer
+• • Purchase Order
+• • Zero Subtotal Checkout
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Does Magento 2 save credit card numbers in the database when the Authorize.net payment method is used?
+
+• • No.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+For which product types can the Magento 2 Recurring Profile be enabled?
+
+• • Recurring Profile is no longer present in Magento 2.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Where can the PayPal Express payment method be used on a Magento 2 site (on which pages)?
+
+• • Product pages (checkout with this product)
+• • Shopping cart page (express checkout)
+• • Checkout page
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What is the difference between the Authorize Only and Authorize and Capture payment actions?
+
+• • This determines what happens when an order is placed. By default, funds are captured with creating an invoice.
+
+• • Authorize only ensures that the card is valid and that there are available funds.
+
+• • Authorize and capture performs the above action as well as initiating the funds transfer.
+
+===================================================================================================================================================================================================================
+
+3.6 SHIPPING:
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Native shipping methods
+
+• • Free Shipping
+• • Flat Rate
+• • Table Rates
+• • DHL
+• • FedEx
+• • UPS
+• • USPS
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Free shipping:
+
+• • All live-rated carriers offer support for free shipping. This offer only applies to a particular service type (say, UPS Ground) for a carrier when the order total is above a specified amount.
+
+• • There is also a free shipping option that will enable free shipping above a specified amount.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Third-party shipping
+
+• • Options for UPS, USPS, FedEx, and DHL.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Can a storefront customer select a delivery date when placing an order with the Table Rates shipping option?
+
+• • Not without custom functionality.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What shipping methods are available natively in Magento 2 Enterprise Edition?
+
+• • Free Shipping
+• • Flat Rate
+• • Table Rates
+• • DHL
+• • FedEx
+• • UPS
+• • USPS
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What options are available for offering a customer free shipping when placing an order?
+
+• • Any of the live-rated carriers.
+• • Table rates.
+• • Free shipping option.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How is the shipping cost calculated for the DHL and Table Rates methods?
+
+• • DHL:
+
+• Uses a rating API to determine the price based on: weight, dimensions, origin, destination.
+
+• • Table Rates:
+
+• Looks up in the table rate table to find a shipping rate based on the weight, destination and price.
+
+===================================================================================================================================================================================================================
+
+3.7 CHECKOUT:
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Data flow:
+
+• • Customer given option to login.
+• • Customer enters shipping address on step #1.
+• • Customer chooses shipping method.
+• • Proceeds to Review & Payment.
+• • Customer selects payment method.
+• • Customer can change billing address.
+• • Customer enters credit card information (if applicable).
+• • Customer places order.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Tax calculation:
+
+• • Tax is manually calculated on products for the specified destination.
+• • This is found in Tax Rules and Tax Zones and Rates.
+• • Tax Rules are an aggregation of Tax Zones and Rates.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Price calculation
+
+• • The totals are calculated:
+• Per address
+• With the number of products shipped to that address
+• Shipping is added
+• Discounts are subtracted
+• Tax is applied (possibly including shipping)
+• Any other custom totals applied in here
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What product types do not require any shipping cost?
+
+• • Downloadable
+• • Virtual
+• • Gift card (possibly)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Can a customer apply a coupon on the order review page?
+
+• • Yes
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Is it possible to change product quantity during checkout, on the order review page?
+
+• • No	
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What is a gift certificate, and how can it be used?
+
+• • Gift certificate (card) is a means of gifting someone else with money already paid to the store (which keeps the funds there).
+• • EE has the capacity for this, and allows these gift cards to be used at the payment step.
+
+=====================================================================================================================================================================================================================
+
+3.8 ORDER PROCESSING (ORDER MANAGEMENT, FULFILMENT, ORDER STATUSES):
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Orders
+
+• • This is the initial step in delivery process.
+• • What the customer wants to purchase is placed into an order record.
+• • This record is visible in Sales > Orders.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Invoices
+
+• • This record is created when an order is billed to the customer.
+• • This can be a manual action, but with customization, can be done automatically.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Shipments
+
+• • This record is created when an order is shipped. This is the final step in fulfilling an order.
+• • This is also, by default, a manual action.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Credit memos
+
+• • This record is created to return money to the customer. It is a return receipt.
+• • This can interact with a payment provider to refund funds.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Returns (RMAs)
+
+• • Authorizes a return and gives information about that return to the merchant.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+When an order is saved in the Magento 2 database, what triggers a confirmation email to a customer who pays using PayPal Express? (Logging in to the PayPal account? Clicking the Checkout button? 
+Clicking the Purchase button?)
+
+• • Clicking the purchase button (at the end of the payment process) sends a request to Paypal to authorize the order.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+When editing a pending order, which order data can be changed?
+
+• • Billing Address
+• • Shipping Address
+• • You can also edit anything in the order if you click the Edit button. However, that will recreate the order, which is a problem for Paypal orders.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What are the different order statuses available in Magento 2, and how can they be managed by a store owner?
+
+• • Pending
+• • Processing
+• • Complete
+• • Closed
+• • Canceled
+• • PayPal Canceled Reversal
+• • Pending PayPal Pricing and tax display
+• • PayPal Reversed
+• • On Hold
+• • Suspected Fraud
+• • Pending Payment
+• • Payment Review
+
+Custom Order Statuses can be created via Stores > Order Status. After a custom order status has been created, it can be assigned to an order state. Custom order statuses can be adjusted in the notes section of
+the order page.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What are the different methods of creating an order in Magento 2 (such as one-page checkout, multiple addresses checkout, back end create order, Web Services API, etc.)?
+
+• • One-page checkout (standard way for customers to purchase)
+• • Variation is the multiple addresses checkout. This allows customers to ship different items to different places.
+• • Admin panel order creation (used by CSRs)
+• • API (used to automate or synchronize order creation)
+• • Custom functionality. Developers can import or migrate order information into a Magento build.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Does Magento 2 native logic allow for partial shipment or partial payment of an order, and if so, what are the conditions for using this functionality?
+
+• • Yes, Magento allows partial invoices and shipments IF the payment provider is set to allow partial capture.
+
+• • Methods that allow this:
+
+• Payflow Pro
+• Express
+• Paypal Direct
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+When processing an order, at what point does the order become complete?
+
+• • When it is invoiced and shipped.
+
+====================================================================================================================================================================================================================
+
+3.9 SECURITY:
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+SSL
+
+• • The store URLs are set in Stores > Configuration > General > Web > Base URLs and Base URLs (Secure).
+
+• • The Magento portion of going SSL-only involves setting the Base URL to be https://example.com.
+
+• • SSL is important as it encrypts traffic going to and from the merchant’s server.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+PCI-DSS / PA-DSS
+
+• • Standards for the payment card industry.
+
+• • PCI-DSS: Payment Card Industry Data Security Standard: this applies to an organization (merchant). It covers all aspects of payment security such as authorized employees, physical and electronic security measures, etc.
+
+• • PA-DSS: Payment Application Data Security Standard: this applies to Magento, Inc.’s products and is a component of being PCI Compliant.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Patching
+
+• • Magento releases patches for security vulnerabilities.
+
+• • Magento includes cron scripts to automatically patch it (which seems dangerous given Magento’s history with problematic patches).
+
+• • Ideal is to review the patch, test it on staging environment, and push live.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Security alerting
+
+• • Magento offers free security auditing services (Magento Security Center).
+
+Backups
+
+• • Magento can backup your website, but this will render it unavailable for a period of time.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What are three major security features in native Magento 2 Enterprise Edition, and are the same features available in Magento 2 Community Edition?
+
+• • Strong data encryption (available in CE)
+• • Updateable database keys (available in CE)
+• • Standard security based on OWASP Top 10
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What is the data encryption / hashing key management method used in Magento 2 Enterprise Edition? Is the same method used in Magento 2 Community Edition?
+
+• • Hashing: MD5 or SHA256 (more secure)
+• • Encryption: default is to use Rijndael_256 algorithm
+
+====================================================================================================================================================================================================================
+
+3.10 EXTENSIONS AND CUSTOMIZATIONS:
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Marketplace
+
+• • Magento’s store to purchase modules.
+• • Module developers upload modules and profit share with Magento.
+• • Magento runs extensive QA on the modules to ensure they fit the requirements.
+• • Merchants or developers purchase modules from this and install.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Installation
+
+• • Installation is fairly straightforward.
+• • If using composer, add the module into composer:
+• • composer requires vendor/module
+• • Then:
+• • bin/magento module:enable vendor_module
+• • bin/magento setup:upgrade
+• • bin/magento setup:di:compile
+• • QA the website to ensure that everything works as expected.
+• • Deploy to product and retest to ensure that everything still works as expected.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Differences between Magento 1 Marketplace and Magento 2 Marketplace
+
+• • Magento Connect had little in the way of QA for the modules uploaded.
+
+• • Magento Connect did not share profits at all.
+
+• • Magento Marketplace uses composer to enable access to modules.
+
+• • Magento Marketplace filters modules to ensure that there is only one approved module per category.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Where can a merchant find Magento 2 extensions?
+
+• • Google
+
+• • Recommended: Magento Marketplace 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What are the two ways of installing an extension in Magento 2?
+
+• • Composer (if available)
+
+• • Manually
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How can a Magento 2 Admin user disable an extension using Admin functionality?
+
+• • This question is misleading. It is not possible to disable an extension in Admin.
+
+• • You can disable a module’s output: Stores > Configuration > Advanced > Disable Modules Output.
+
+• • This just prevents a module from showing any HTML. The module still can run in the background.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+When is a customization required?
+
+• • When vanilla Magento doesn’t have needed functionality.
+
+• • When a quality module that meets the needs is not available.Then you write your own customization.
+
+=====================================================================================================================================================================================================================
+
+3.11 CUSTOMERS (SEGMENTS, GROUPS):
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Customer groups
+
+• • Provides a grouping mechanism for customers.
+• • Allows application of specific rules or actions for customers in that group.
+• • For example, customer groups can have special pricing, receive discounts, be exempted from tax, etc.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Customer segments
+
+• • A means to create a segment of customers based on previous purchasing history.
+
+• • This gives capability to target customers who are not in a customer group with emails and website updates.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Customer attributes
+
+• • Describes the customer.
+
+• • An example is the Date of Birth field. While I hope no one actually uses this field, it does describe the customer.
+
+• • Enterprise Edition gives the capability for creating and modifying (via the admin interface) these attributes.
+
+• • While this is technically possible in the database in CE, the admin interface makes it much easier.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Customer account features and functionality (wishlists, gift registry, returns)
+
+• • Wishlists are a CE and EE feature of Magento. This allows the customer to create a selection of products that they wish to purchase (or others to purchase for them) in the future. The
+wishlists are private but can be shared via email with other customers. Enterprise supports multiple wishlists per customer.
+
+• • Gift Registry is an EE-only feature of Magento. The registry allows customers to create a public list of products that they wish to be purchased. Often this is used for weddings and baby showers and
+similar events.
+
+• • Returns is an EE-only feature of Magento. If enabled, a customer can locate their order and begin the process to return it. This is hooked up to the RMA section of the Magento Admin.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What are the differences between customer segments and customer groups?
+
+• • Customer groups are manual (or programmatically assigned).
+
+• • Customer segments are dynamic and are determined based on criteria or attributes of the customer’s history or details.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Using Magento 2 Enterprise Edition native functionality, how could you display a personalized banner targeted to customers who match specific conditions?
+
+• • You can set a banner to only be visible to a specific customer segment.
+
+=====================================================================================================================================================================================================================
+
+3.12 USING CMS:
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+CMS pages and blocks
+
+• • CMS pages are publicly viewable. They are like a product except that there is almost no structured data used to display. Enterprise Edition adds a lot of functionality to this area of the admin panel.
+
+• • CMS blocks are reusable pieces of content. Maybe you have an author’s bio to be used on the website. You could place that bio in a static block and insert that (using a widget) almost anywhere you
+    want on the website.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Widgets:
+
+• • Widgets are a very powerful way to create and control content.
+
+• • Magento comes with the following:
+
+• Banner Rotator (EE-only)
+• CMS Hierarchy Node Link (EE-only)
+• CMS Page Link
+• CMS Static Block
+• Catalog Category Link
+• Catalog Events Carousel (EE-only)
+• Catalog New Products List
+• Catalog Product Link
+• Catalog Products List
+• Gift Registry Search (EE-only)
+• Order by SKU (EE-only)
+• Orders and Returns (EE-only)
+• Recently compared products
+• Recently viewed products
+• Wish list search
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Banners:
+
+• • Gives merchant the capability to display banners on the website. They can be customized and shown based on customer segments and other conditions.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How can you display a telephone number in a page footer using Admin functionality?
+
+• • Set it in System > Configuration > General > Store Information 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Does a layout change of a category page from one column to three columns require a customization?
+• • No
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What does the Activate Bluefoot Button do?
+• • It enables Bluefoot functionality for an attribute or area. For example, clicking the Activate Bluefoot button a product description will enable Bluefoot for just that product description.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Does creating a product price attribute require a customization, or can this be achieved using native Magento 2 functionality?
+
+• • This can be achieved with native functionality:
+
+• Stores > Product Attributes > Add New Attribute
+• Catalog Input Type for Store Owner: Price
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Could you create a “How did you hear about us?” customer attribute to collect customer data during purchase and export it to a CSV file using native functionality?
+
+• • Yes!
+
+• Create the attribute (EE-only):
+• Stores > Attributes > Customer
+• Add New Attribute
+
+• • To Export:
+
+• System > Export
+• Entity Type: Customers Main File
+• Click continue (checking a box in the list will exclude that attribute).
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Which Magento 2 feature can be used to display different content depending on customer type/group?
+
+• • Customer Segments for banners (EE-only)
+• • Category Permissions (EE-only) can filter by customer group.
+
+=====================================================================================================================================================================================================================
+
+3.13 PROMOTIONS AND PRICING RULES (CATALOG RULES, SHOPPING CART RULES)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Catalog price rules
+
+• • Discounts for multiple products.
+• • Allows you to target products through specified attribute values.
+• • Can be utilized for certain customer groups (this is one way to give a customer group an across-the-board discount).
+• • Rules must be applied to the products by clicking Apply Rules on the grid page or Save and Apply on the individual page.
+• • This causes the indexes to refresh and store the new pricing data.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Shopping cart price rules
+
+• • Discounts applied to the shopping cart.
+
+• • These can be applied based on customer groups (another way to give a customer group an across-the-board discount) or with customer segments (EE-only).
+
+• • Can also be used to create coupon codes (where you can specify a number of uses per customer).
+
+• • Conditions apply to products and how they relate to the cart AND/OR product attributes.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Product relations (related products, upsells, cross-sells)
+
+• • Related products are visible on the product page
+
+• The goal is that they direct a customer’s attention to other products that can be purchased as a companion to the product they are looking at. An example here would be if the main product is an iPhone, you might list a case to go with that.
+
+• • Upsells are visible from a product page
+
+• The goal is to show these products higher on the page (than related products) as the goal is to sell these as a higher-value item than the viewed product.
+
+• • Cross-sells are visible on the shopping cart page
+
+• Similar to related products, these guide the shopper to additional products that might benefit their current purchase OR a smaller-value item as an impulse buy.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Reward points
+
+• • Part of the shopping cart price rules.
+
+• • Gifts the customer with loyalty / reward points when they purchase specific products.
+
+• • Allows them to cash them back in and purchase more goods from the merchant.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Coupons
+
+• • Cart Pricing Rules
+• • Marketing > Cart Price Rules
+• • To create a coupon code:
+• Go to the above path.
+• Click Add New Rule.
+• Select Coupon: Specific Coupon.
+• Either specify a coupon code or check “Use Auto Generation.”
+• The coupon code can be limited to a number of uses per coupon (first 100 to use this coupon get it).
+• OR the coupon code can be limited to a number of uses per customer (each customer can use this coupon 3 times).
+• OR you can use Auto Generation to create a pool of coupons to use.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How can product attributes be used when creating shopping cart discounts?
+
+• • Create a new Cart Price Rule.
+• • Marketing > Cart Price Rules
+• • Click Add New Rule.
+• • Go to Conditions.
+• • Select Products Attribute Subselection.
+• • Click the Plus below “if an item is found in the cart with ALL of these conditions true:”
+• • Select an attribute and click the ellipses (...) to the right of “is.” Specify the text value (not the attribute ID).
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How is the use of shopping cart coupon codes tracked with Magento 2 native logic?
+
+• • Go to the shopping cart rule.
+• • Click on the new Manage Coupon Codes section.
+• • Coupon codes that are used are visible here.
+• • Reports > Sales / Coupons
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What are the three common methods of creating product price discounts?
+
+• • Single product special price: go into the product and set the Special Price attribute and the date range that this price will be in effect.
+• • Catalog Price Rules: on a more global basis, use product attributes to locate the products for a discount.
+• • Cart Price Rules: apply blanket discounts to all products.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How could you create a product price discount and display a related “on sale” banner on listing pages using Magento 2 Enterprise Edition functionality?
+
+• • Create the pricing rule:
+• • Marketing > Catalog Price Rules
+• • Create the banner:
+• • Content > Banners
+• • Add banner.
+• • In “Related Promotions,” specify the price rule to be featured.
+
+=====================================================================================================================================================================================================================
+
+3.14 IMPORT AND EXPORT (OF CUSTOMERS, ORDERS, PRODUCTS):
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Which customer and product data can be imported and exported using Magento 2 native logic?
+
+• • Product details
+
+• Data for all product types
+• Product images
+
+• • Advanced pricing for products
+
+• • Customer details
+
+• • Customer addresses
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What is the process of creating a product in Magento using product import functionality?
+
+• • Export the products. This will provide a good working template for the import.
+
+• • Specify the fields.
+
+• • SKU is the only thing required.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Can you add an image to a product using Magento product import functionality?
+
+• • Yes.
+• • Set the base_image, small_image or thumbnail_image values in the CSV to import.
+
+• • In System > Import, specify the folder that contains these files (will be improved in 2.2).
+
+=====================================================================================================================================================================================================================
+
+3.15 REPORTING:
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Magento reporting
+
+• • Magento’s reports are a way to get aggregated insight into the pipeline and how the website is functioning.
+
+• • At this point, they seem quite lacking, but can provide occasionally useful information.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Magento Business Intelligence reporting
+
+• • Magento’s solution to the need for more advanced reporting with additional data sources.
+
+• • This aggregates data from additional sources, such as Google Analytics.
+
+• • A Google Analytics for ecommerce, where all your data is stored and displayed in one location.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+If several reports are not up-to-date, how can you remedy this?
+
+• • Reports > Statistics > Refresh Statistics 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+What formats can the Abandoned Carts report data be exported in?
+
+• • CSV
+• • Excel XML (xml)
+
+=====================================================================================================================================================================================================================
+
+3.16 TRANSACTIONAL EMAILS
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Transactional email templates are comprised of a mixture of what three languages?
+
+• • HTML
+• • CSS
+• • Text
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How do you configure an email action to use a particular template?
+
+• • Store > Configuration
+
+• • Find the area that the email template might be found in:
+
+• Customer > Customer Configuration
+• Sales > Sales Emails
+• Select the name of your new transactional email template.
+
+• • Template modification is found in Marketing > Communication > Email Templates.
+
+• • When creating transactional email templates, I like to name new ones like this:
+
+• Existing name
+• One or two words that describe the changes you are making.
+
+====================================================================================================================================================================================================================
+
+

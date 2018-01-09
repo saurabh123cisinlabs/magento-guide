@@ -1,0 +1,489 @@
+=====================================================================================================================================================================================================================
+
+                        ========================================================================= APPLICATION OF KNOWLEDGE ===================================================================  23%
+
+
+4.1 REQUIREMENTS GATHERING:
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Determining client needs:
+
+• • This is beyond the scope of a study guide.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Requirements gathering techniques:
+
+• • Meetings and discussions
+• • Reviewing existing codebase (if possible)
+• • Careful analysis of current platform (if migrating)
+• • Detailing every area of the website (if migrating)
+• • 1:1 interviews
+• • Workshops
+• • Surveys
+• • Data analysis
+• • Questions:
+
+• What problem are we solving? OR What is the intended purpose?
+• How is it going to be used?
+• Who is going to use it?
+• Are there any other systems or modules that will be touched in this process?
+
+=====================================================================================================================================================================================================================
+
+4.2 INTERNATIONALIZATION / MULTISITE:
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Multisite infrastructure
+
+• • Multiple Magento sites (store_website table)
+
+• One server solution. Cheapest / easiest.
+
+• • Multiple servers:
+
+• Connected to one single database
+  More scalable, but database could become the bottleneck.
+
+• Replicated
+  Challenging, but database should be scalable at this point.
+
+• • Completely separate, same codebase
+
+• Separation in orders, customers, configuration.
+• Used for different server locations and no continuity with data.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Websites, stores, store views
+
+• • Website: the brand / idea being sold.
+• • Stores: a segment of a product offering. Where the root category isset. Likely the least used of the three categories.
+• • Store view: the language presented to the customer.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Localization
+
+• • Targeting website at a specific language or nationality.
+
+• • Magento is very localizable. Settings for this is found in Store > Configuration > General > General > Locale Options
+
+• Timezone
+• Locale / language
+• Weight unit
+• First day of week
+• Weekend days
+
+• • Magento does not handle other calendars.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+International taxes
+
+• • Easy to target other countries with Stores > Tax Zones and Rates.
+• • Specify country name and enter the percentage.
+• • Should reference an international tax lawyer for what rates apply where.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Multisite shipping
+
+• • Shipping from multiple warehouses resulting in multiple shipments.
+• • Magento CE does not handle this natively at this point.
+• • Magento Commerce Order Management:
+
+=====================================================================================================================================================================================================================
+
+4.3 THIRD-PARTY INTEGRATIONS:
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++===
+
+OMS
+
+• • Order Management System
+
+• • Examples:
+• Netsuite
+• Magento Commerce Order Management
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Centralized inventory
+
+• • Centralized is having the inventory in one location. Many ecommerce merchants use this model.
+
+• • Decentralized is having inventory at multiple locations and each is managed individually.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ERP
+
+• • ERP: Enterprise Resource Planning
+• • Centralized system to handle almost all business processes.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Financial systems
+
+• • System to handle a company’s finances.
+• • Microsoft Dynamics
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+PIM, etc.
+
+• • Product Information Manager
+• • Centralized repository for storing product information.
+
+=====================================================================================================================================================================================================================
+
+4.4 PROMOTIONS:
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Customer segments
+
+• • Promoting to specific customer segments is to increase those customers’ use of that coupon (thus engagement with the website) without offering it to everyone (and potentially groups of customers
+who wouldn’t be as profitable).
+
+• • Magento EE makes this very simple with the customer segment tool.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Related products
+
+• • Related products serve two purposes:
+• • Gives customer other options (golden rule).
+• • Try to sell more products.
+• • Best to be used in a way to educate customer on your other offerings.
+
+====================================================================================================================================================================================================================
+
+4.5 CUSTOMER LOYALTY:
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Reward points
+
+Reward points
+
+• • Used to incentivize customers coming back.
+• • Issue is that there needs to be plenty enough points to warrant a customer’s return. Many sites do not give enough and this is either ineffective (best) or a turn-off (worst).
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Gift accounts
+
+• • Gift cards can be an effective way of spreading the news about a brand.
+• • Often purchased around Christmas if giver doesn’t know what the giftee wants from a store.
+• • Can be a mark of great loyalty to a brand.
+
+===================================================================================================================================================================================================================
+
+4.6 LAWS AND REGULATIONS:
+
+Distance selling
+
+• • UK requirements for information provided to consumer:
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+PCI-DSS
+
+• • PCI compliance is not a law, but rather an industry self-imposed regulation (saving credit card companies money).
+
+• • By processing credit cards, merchants agree to be bound to these regulations.
+
+• • These standards touch almost all areas of business to ensure that cardholder data is transmitted securely.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+VAT and digital VAT
+
+• • EU now requires merchants to collect VAT on SaaS products.
+• • VAT is charged based on shipping address.
+• • Not required to be visible on the product pages (but it is a good idea).
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Cross-border trade
+
+• • Business to business sales across international lines.
+
+=====================================================================================================================================================================================================================
+
+4.7 CATALOG MANAGEMENT:
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+• • High numbers of SKUs often affect the performance of managing product collections and their indexes.
+
+• • This would manifest itself
+
+• in the admin panel while editing products
+• in catalog searches
+• in browsing through categories
+
+• • With a large number of SKUs, it becomes important to standardize SKU and product naming.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+High volume sales
+
+• • A high sales volume can bring along performance challenges. This means that the entire site is under a (possibly heavy) load and the server / architecture / infrastructure might need to be reconsidered.
+
+• • At this point, major customizations and streamlining will need to be made to the fulfillment process.
+
+• • Depending on inventory management, most of the steps to process an order can be automated.
+
+• • Magento EE Database sharding can help reduce the database as a bottleneck.
+
+====================================================================================================================================================================================================================
+
+4.9 CUSTOMIZATION VS. NATIVE FEATURES:
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Repurposing native functions
+
+• • Effective strategy to take advantage of existing core code as possible through extending. This carries both pros and cons. Pros are that the code has already been tested and should be stable; it also should save time. Cons are that you need to ensure upon version upgrades that there are no breaking changes.
+
+• • An example of repurposing native functions is we added the idea of website reviews onto the product reviews module. Pretty much
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Customization strategies
+
+• • The least customization possible. Customers don’t want to pay more than necessary, and custom coding often brings in defects. While an excellent QA team help to mitigate this, there is almost no
+way to get it 100%.
+
+• • The more native functionality that can be reused the better.
+
+====================================================================================================================================================================================================================
+
+4.10 RETURNS (RMA)
+
+• • While returns can be very expensive for a company, they give good insight into what a customer thinks of the product.
+
+• • Might the product description or photos be inaccurate?
+
+• • Might the product be poorly constructed?
+
+• • Might the packaging of the product be faulty?
+
+• • Might the customer be having buyer’s remorse for some reason?
+
+• • The number of people who handle returns (if listed on a website) often gives an insight into how many issues companies have with their products.
+
+====================================================================================================================================================================================================================
+
+4.11 CHECKOUT
+
+• • This is the most often abandoned area of the customer journey.
+
+• • Companies often have two goals:
+
+• Get the necessary information to process the order. This competes against:
+• Help the customer checkout as quickly as possible.
+
+• • This is where many one-click checkouts have arrived: they help provide the necessary shipping and billing information to the merchant, making the customer’s checkout faster.
+
+• • Obviously, at the point of the checkout page, customers might still be trying to see what shipping / tax costs or determine other information about their purchase.
+
+• If this information is made readily accessible beforehand, this might reduce the number of abandoned carts.
+
+====================================================================================================================================================================================================================
+
+4.13 CONVERSION RATE ENHANCEMENT
+
+SEO, native features, and common methodologies
+
+• • See related sections above.
+
+• • Conversion rate optimization (CRO) involves helping increase the number (percentage) of people that convert their carts into an order.
+
+• • Many times what prevents customers from doing this is a poor interface, lacking information or lack of credibility.
+
+======================================================================================== QUESTIONS =================================================================================================================
+
+What are some of the methods used to gather requirements?
+
+• • SMART criteria for setting objectives
+
+{ SMART is a mnemonic acronym, giving criteria to guide in the setting of objectives, for example in project management, employee-performance management and personal development. The letters S and M usually mean specific and measurable. Possibly the most common version has the remaining letters referring to attainable, relevant and time-bound. }
+
+• • Questions
+
+• Who to ask questions to?
+• What do you need it to do?
+• Who is going to use it?
+• How many people will be using it?
+• What is the budget?
+• What is the ROI?
+
+• • Google Analytics / New Relic
+
+• • Magento details:
+
+• Order volume
+• System Configuration > Advanced
+• Look through menus, compare against vanilla
+• Look in app/etc/modules
+• Click through the website: left sidebar and top are highest priority often.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+In a multi-site infrastructure, what is the reach of “Global” scope?
+
+• • It is one value for all websites, stores, and store views.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+What is required to display prices in several currencies?
+
+• • Stores > General > Currency Setup > Scheduled Import Settings
+
+• Enabled: Yes
+• Service: your choice
+
+• • Stores > General > Currency Setup > Currency Options
+
+• Ensure Default Display Currency and Base Currency are accurate
+• Select currencies from Allowed Currencies
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+Why would a merchant enable cross-border taxes?
+
+• • If legal compliance is required.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+What is meant by “Master Data Record”?
+• • A unique identifying number. This also could be called a primary key.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+How might customer segmentation be used with product discounts?
+
+• • To offer discounts to specific groups of customers.
+• • Segments who have possibly demonstrated their loyalty in the past are rewarded.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+What is Personally Identifiable Information?
+
+• • Data that could be used to identify a person.
+• • Could be:
+• • Name
+• • Email
+• • Address
+• • Driver’s license
+• • DOB
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+How does the European Union (EU) requirements for data protection differ from US requirements?
+
+• • EU has been more protective than the US.
+• • https://en.wikipedia.org/wiki/International_Safe_Harbor_Privacy_Principles
+• • The easiest and safest is to not store European customer data in the United States. This is often not possible and might require additional research to determine what is proper given the situation.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+What are VAT and digital VAT?
+
+• • VAT is value added tax.
+
+• This is a tax at various levels during the manufacturing / distributing processes.
+
+• • Digital VAT is a tax on digital goods sold.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+Does a software company based in the US need to charge EU customers VAT on its downloadable products?
+
+• • Yes, they should.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+In UX terms, what is meant by a “persona”?
+
+• • An aggregated person as an example of who you are marketing to.
+• • This might be a female in her 30s that works at XYZ company.
+• • Personas help visualize who you are trying to reach.
+• • Better yet, interact with actual people.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+In UX, what is meant by a triple A (“AAA”) rating?
+
+• • Conformance to the WCAG 2.0 (https://www.w3.org/TR/WCAG/#conformance).
+• • This is a web accessibility standard, ensuring that a webpage or website is accessible by assistive devices.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+A customer wants to display a CMS block on category pages. What would be the most efficient way to implement that?
+
+• • Browse to Category.
+
+• • Display Settings > Set Display Mode to be Static block and Products.
+
+• • Content > Add CMS Block to be the static block you would like displayed.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+What payment method(s) would you recommend as the easiest technical solution to satisfy PCI requirements?
+
+• • Paypal Express: this transfers all cardholder data liability to PayPal.
+• • Second best: Braintree and Payflow Link.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+A customer wants the ability to preview product information pages in the production environment before making them live. Which Magento 2 Enterprise Edition module would you recommend to satisfy this
+need?
+
+• • Content Staging
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+A merchant uses a Magento 2 system, along with other online interfaces, as part of a multichannel business, and the merchant uses a business intelligence application to aggregate data from all these systems. Which native features would allow the merchant to integrate Magento with this application?
+
+• • The data can be obtained from Magento via it’s API.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+In what two ways can a returns process be invoked?
+
+• • Admin panel (by a CSR)
+• • Customer account (by a customer)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+A merchant wants to integrate Magento 2 with an order management system. What native features would they need to use to achieve this?
+
+• • Many order management systems will have a Magento module.
+
+• • If they don’t have a module, they might have the capability to push and pull data from Magento’s API.
+
+• • If API integration doesn’t exist, there is likely a third-party vendor that has an integration (Xtento, for example).
+
+• • If a third-party integration doesn’t exist, it will likely require a customization.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+A merchant has left all the image alt tags blank throughout their site. Why is this a bad idea, and what would you recommend?
+
+• • Not all users browse the site with a mouse and a screen. For accessibility, it is very important that all images have an understand label in the alt attribute. In addition, search engines need the
+alt tags populated to give an idea as to what is presented in the image. While search engines are getting better at understanding objects in the image, they will likely never understand the intent of
+an image without this information.
+
+• • As soon as is possible, all image alt tags should be populated across the website.
+
+====================================================================================================================================================================================================================
+
+
+
