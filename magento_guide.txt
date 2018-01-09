@@ -2777,7 +2777,9 @@ SEO, native features, and common methodologies
 
 What are some of the methods used to gather requirements?
 
-• • SMART criteria for setting objectives (https://en.wikipedia.org/wiki/SMART_criteria)
+• • SMART criteria for setting objectives
+
+{ SMART is a mnemonic acronym, giving criteria to guide in the setting of objectives, for example in project management, employee-performance management and personal development. The letters S and M usually mean specific and measurable. Possibly the most common version has the remaining letters referring to attainable, relevant and time-bound. }
 
 • • Questions
 
@@ -2797,6 +2799,18 @@ What are some of the methods used to gather requirements?
 • Look through menus, compare against vanilla
 • Look in app/etc/modules
 • Click through the website: left sidebar and top are highest priority often.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+In a multi-site infrastructure, what is the reach of “Global” scope?
+
+• • It is one value for all websites, stores, and store views.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
+
+
+
 
 
 
