@@ -172,6 +172,56 @@ Composer.json
 
 Not all modules will require a composer.json file. If you never plan on using this module on any other project, it is fine to omit it.
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Adding Composer to the Module:
+
+We know that we want to use a Filesystem library within our module, and we also want to use PhpSpec while writing it, so let’s create a composer.json file in the root of our module. 
+
+{
+ “name”: “packageName/moduleName”,
+ “description”: “Generate new classes for M2”,
+ “license”: “MIT”,
+ “type”: “magento2-module”,
+}
+
+
+Require:
+
+So we know that we can use Composer to install packages that will make development easier (“easier” in the sense that we are not rewriting everything from scratch; we can use community packages in our work). Now let’s pull in a symfony package for filesystem, as well as a yaml configuration, just in case we want to add some configuration options.
+
+“require”: {
+ “php”: “>=5.4.0”,
+ “symfony/yaml”: “2.*”,
+ “symfony/filesystem”: “~2”,
+ “composer/composer”: “1.0.0-alpha10”
+},
+
+
+Require dev:
+
+We also want to include some packages while developing our module, but we don’t want these dependencies to ever make it to production. For this, Composer has the helpful section of require-dev.When installing on the production environment, we can use the –no-dev switch to exclude these packages from reaching production.
+
+“require-dev”: {
+ “phpspec/phpspec”: “~2.0”,
+ “phpunit/phpunit”: “~3.7”,
+ “magento/magento2ce”: “1.0.0-beta”
+},
+“repositories”: [
+ {
+ “type”: “git”,
+ “url”: “https://github.com/magento/magento2”
+ }
+]
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
++++
+
+
+
+
+
 
 
 
