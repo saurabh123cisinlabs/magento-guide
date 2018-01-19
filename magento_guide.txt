@@ -216,6 +216,11 @@ We also want to include some packages while developing our module, but we don’
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+What is EAV in Magento?
+EAV, stands for Entity Attribute Value, is a technique which allows you to add unlimited columns to your table virtually. EAV also known as object attribute value model and open schema.
+
+
+
 
 
 
