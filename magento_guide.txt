@@ -219,6 +219,24 @@ We also want to include some packages while developing our module, but we don’
 What is EAV in Magento?
 EAV, stands for Entity Attribute Value, is a technique which allows you to add unlimited columns to your table virtually. EAV also known as object attribute value model and open schema.
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Encriptions Key: https://www.templatemonster.com/help/magento-what-is-magento-encryption-key.html
+
+1) The Magento Encryption Key is generated during the Magento Installation. It is used for the encryption and the security storage of the sensitive data in the script’s database:
+
+2) The Magento Encryption Key is kept in the app/etc/local.xml file. You can open it through File Manager tool in your cPanel or FTP, for example. In this file, you can look for the following code:
+
+3) The ENCRYPTION_KEY string is replaced by the actual encryption key.
+
+4) Note that when you upgrade the site to a new Magento installation, you will be able to log in with the usernames and passwords that you used, even if the encryption key is different.
+
+5) However, if you forgot to remember and resave encryption key from the old installation, you will encounter a problem where some payment or shipping gateways will not work. Access data will not work although you have them in the database. This is where Encryption Key is important. For example, PayPal, Authorize.net and similar transaction keys and passwords are additionally secured with this key via hash & salt method. Basically, without the transaction key, you will have to re-save those access data from Magento administration interface.
+
+6) You should always keep your Magento encryption key securely saved somewhere. You will need it in case you want to move your data to a different Magento instalation. In addition, some payment and shipment processors require it to operate correctly.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+
 
 
 
