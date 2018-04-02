@@ -251,6 +251,17 @@ In Magento, ORM is shown as Models (in Magento design pattern MVC). Most of the 
 $product = Mage::getModel(‘catalog/product’)->setPrice(100);
 echo $product->getPrice();
 
+=====================================================================================================
+
+Template/Theme fallback: https://www.classyllama.com/blog/depth-look-magento-theme-fallback
+
+Current Fallback Structure
+Magento Enterprise 1.14 and Community 1.9 introduced a new, more flexible theme fallback mechanism. Each theme can now specify its parent, which can then specify its parent, and so on. This theoretically allows infinite fall back levels instead of the fixed number of fall back “slots” in older versions.
+
+=================================================================================================
+
+
+EAV: http://inchoo.net/magento/magentos-database-layout-and-its-eav-structure/
 
 
 
