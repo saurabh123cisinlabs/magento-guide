@@ -1,6 +1,7 @@
                   
 ====================================================================== Magento Foler structure ++++++++++++++++++++++++++++++++++++++
 Magento1 default number of table : 334
+Magento2 default number of tables: 308 
 ======================================
 app
 
