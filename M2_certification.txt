@@ -1,0 +1,433 @@
+https://info2.magento.com/rs/585-GGD-959/images/M2%20Cert%20Pro%20Dev%20Exam%20v2_3%20Study%20Gd.pdf?mkt_tok=eyJpIjoiTW1JMlpqRmhaRE0zTWpKayIsInQiOiJWR2FOSHFMdmJHdmVYUzY1QXB0OHZlNms0WngzRmpYOHFmbWNxWlBGOFVXTHN6WmxEMTl1SjdLZndHdEhNbE9OWG5iMDdHTjJMeld4RVdBcGxqU2srNnIrUFFRc0dMUTJBeEZaZEVrNlc5Z2F6S3l5SkE0bnpHeU1kdXd2N29MWSJ9
+https://swiftotter.com/media/developer-study-guide-sample.pdf
+================================================================
+
+https://github.com/magento-notes/magento2-exam-notes/tree/master/
+
+https://belvg.com/blog/plus-two-magento-2-certified-professional-developer-at-belvg.html
+
+Exam topics and the approximate percentage covered in the test:
+
+• Magento Architecture & Customization Techniques         18%
+• Request Flow Processing                                 12%     
+•Customizing the Magento UI                               10%
+• Working with Databases in Magento                       7%
+• Using the Entity-Attribute-Value (EAV) Model            8%
+• Developing with Adminhtml                               10%
+• Customizing the Catalog                                 12%
+• Customizing the Checkout Process                        13%
+• Sales Operations                                        5%
+• Customer Management                                     5%
+
+====================================================================
+
+
+Magento Architecture & Customization Techniques      18%        11-12 question
+
+1.1 Describe Magento’s module-based architecture
+1.2 Describe Magento’s directory structure
+1.3 Utilize configuration XML and variables scope
+1.4 Demonstrate how to use dependency injection
+1.5 Demonstrate ability to use plugins
+1.6 Configure event observers and scheduled jobs
+1.7 Utilize the CLI
+1.8 Demonstrate the ability to manage the cache
++++++++++++++++++++++++++++++++++++++++++++++++
+
+Magento2 composer file use:
+
+Composer is a dependency management for PHP and in Magento 2, the composer plays the role in gathering components and product editions. When using the Magento 2 composer,
+there is no requirement of storing all code of each component, and you only need to create composer.json file and declare the needed components in that file instead that.
+Immediately, the composer will auto-define and take the corresponding data of those components to run for your project.
+
+## When a component contains composer.json file,  
+
+## When a component still includes composer.json file but doesn’t need to install via Magento 2 composer such as the customization of written codes by a developer,
+the Component Manager can still enable or disable the component.
+
+
+Magento module overview:
+
+A module is a logical group – that is, a directory containing blocks, controllers, helpers, models – that are related to a specific business feature. In keeping with Magento’s commitment to optimal modularity,
+a module encapsulates one feature and has minimal dependencies on other modules.
+
+Modules and themes are the units of customization in Magento. Modules provide business features, with supporting logic, while themes strongly influence user experience and storefront appearance. Both components
+have a life cycle that allows them to be installed, deleted, and disabled. From the perspective of both merchants and extension developers, modules are the central unit of Magento organization.
+
+Modules can be installed with Composer allowing their version management. All modules installed in such way are placed in the vendor/ folder and have next base structure vendor/<vendor>/<type>-<module-name>.
+In this case <type> can be:
+
+    module - Magento module
+    theme - admin or frontend themes
+    language - language packs
+    
+In a case when you have a very specific functionality or customisation which is related to a specific project and there is no need to share it with other projects it should be created in the
+app/code/<vendor>/<type>-<module-name> directory and the required directories within it.
+
+
+Module registration:
+
+
+Magento components, including modules, themes, and language packages, must be registered in the Magento system through the Magento ComponentRegistrar class. 
+Each component must have a file called registration.php in its root directory. For example, here is the registration.php file for Magento’s AdminNotification module.
+Depending on the type of component, registration is performed through registration.php by adding to it as follows.
+
+
+    How to register modules - registration.php [1]
+
+<?php
+
+use \Magento\Framework\Component\ComponentRegistrar;
+
+ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Magento_AdminNotification', __DIR__);
+
+
+    how to register language packages - registration.php [2]
+
+<?php
+
+use \Magento\Framework\Component\ComponentRegistrar;
+
+ ComponentRegistrar::register(ComponentRegistrar::LANGUAGE, '<VendorName>_<packageName>', __DIR__);
+
+    
+    how to register themes - registration.php [3]
+
+<?php
+
+use \Magento\Framework\Component\ComponentRegistrar;
+
+ ComponentRegistrar::register(ComponentRegistrar::THEME, '<area>/<vendor>/<theme name>', __DIR__);
+ 
+ 
+Invoke registration.php in composer.json with autoload
+
+After you create your registration.php file and you are creating your component’s composer.json file, invoke your registration.php file in the autoload section of composer.json:
+
+{
+    "name": "Acme-vendor/bar-component",
+    "autoload": {
+        "psr-4": { "AcmeVendor\\BarComponent\\": "" },
+        "files": [ "registration.php" ]
+    }
+}
+
+
+
+    how registered when not in composer - project composer.json autoload/files[] = app/etc/NonComposerComponentRegistration.php [6]
+
+    "autoload": {
+        "files": [
+            "app/etc/NonComposerComponentRegistration.php"
+        ],
+    }
+
+
+registration.php search paths
+
+app/code/*/*/cli_commands.php, registration.php
+app/design/*/*/*/registration.php
+app/i18n/*/*/registration.php
+lib/internal/*/*/registration.php
+lib/internal/*/*/*/registration.php
+
+registration.php load flow
+
+    pub/index.php
+    app/bootstrap.php
+    app/autoload.php
+    vendor/autoload.php
+    vendor/module[]/registration.php -- last step in Composer init
+    Magento\Framework\Component\ComponentRegistrar::register(type='module', name='Prince_Productattach', path='/var/www/...')
+    
+
+Describe module limitations.
+
+Minimization of software dependencies is a cornerstone of Magento architecture. Based on this principle there are several logical limitations:
+
+    One module is responsible only for one feature.
+    Module dependencies on other modules must be declared explicitly.
+    Excluding or disabling a module should not disabling another module.
+    
+
+How do different modules interact with each other?
+
+Magento 2 is PSR-4 compliant. As a main principle of module interaction Magento 2 declares a dependency injection pattern and service contracts.
+One of the important parts of module interaction is a Magento area. All components operate with the system and other components in the scope of default areas.
+Module dependencies
+
+Modules can contain dependencies upon these software components:
+
+    Other Magento modules.
+    PHP extensions.
+    Third party libraries.
+
+PSR: This PSR describes a specification for autoloading classes from file paths. It is fully interoperable, and can be used in addition to any other autoloading specification, including PSR-0.
+This PSR also describes where to place files that will be autoloaded according to the specification.
+https://www.php-fig.org/psr/psr-4/
+
+Module dependencies can be managed by:
+
+        Name and declare the module in the module.xml file.
+        Declare any dependencies that the module has (whether on other modules or on a different component) in the module’s composer.json file.
+        (Optional) Define the desired load order of config files and .css files in the module.xml file.
+
+
+# You can build dependencies between classes in the application layer, but these classes must belong to the same module. Dependencies between the modules of the application layer should be built only by the
+service contract or the service provider interface
+
+Magento areas
+
+A Magento area organizes code for optimized request processing by loading components parts which are related only to the specific area. Areas are registered in the di.xml file.
+
+    Modules define which resources are visible and accessible in an area, as well as an area’s behavior. The same module can influence several areas. For instance, the RMA module is represented partly in the adminhtml area and partly in the frontend area. If your extension works in several different areas, ensure it has separate behavior and view components for each area. Each area declares itself within a module. All resources specific for an area are located within the same module as well. You can enable or disable an area within a module. If this module is enabled, it injects an area’s routers into the general application’s routing process. If this module is disabled, Magento will not load an area’s routers and, as a result, an area’s resources and specific functionality are not available.
+    
+
+Magento has 5 areas types:
+
+        Magento Admin (adminhtml): entry point for this area is index.php or pub/index.php. The Admin panel area includes the code needed for store management. The /app/design/adminhtml directory contains all the code for components you’ll see while working in the Admin panel.
+        Storefront (frontend): entry point for this area is index.php or pub/index.php. The storefront (or frontend) contains template and layout files that define the appearance of your storefront.
+        Basic (base): used as a fallback for files absent in adminhtml and frontend areas.
+        Cron (crontab): In cron.php, the \Magento\Framework\App\Cron class always loads the 'crontab' area.
+
+    You can also send requests to Magento using the SOAP and REST APIs. These two areas:
+
+        Web API REST (webapi_rest): entry point for this area is index.php or pub/index.php. The REST area has a front controller that understands how to do URL lookups for REST-based URLs.
+        Web API SOAP (webapi_soap): entry point for this area is index.php or pub/index.php.
+
+Not documented but used in code Magento/Framework/App/Area.php:
+
+    Documentation (doc). Deprecated.
+    Admin (admin). Deprecated.
+
+
+What side effects can come from this interaction?
+
+    error when module is missing or disabled
+    error when injecting missing class 
+    (?) null or error when using object manager for missing class ReflectionException - Class MissingClass does not exist objectManager->create() = new $type() or new $type(...args) --> PHP Warning: Uncaught Error: Class 'MissingClass' not found
+
+
+
+Where are the files containing JavaScript, HTML, and PHP located?
+
+    view/frontend/web/js
+    view/frontend/requirejs-config.js
+    view/frontend/layout
+    view/frontend/templates
+
+<Magento install directory>/vendor
+
+    This location is found in the alternative setups where the composer create-project command was used to get a Magento 2 metapackage (which downloads the CE or EE code), or a compressed Magento 2 archive was
+    extracted in order to install Magento.
+
+    Any third party components (and the Magento application itself) are downloaded and stored under the vendor directory. If you are using Git to manage project, this directory is typically added to
+    the .gitignore file. Therefore, we recommend you do your customization work in app/code, not vendor.
+    
+    
+Required files
+
+    registration.php: Among other things, this file specifies the directory in which the component is installed by vendors in production environments. By default, composer automatically installs components
+    in the /vendor directory. For more information, see Component registration.
+
+    etc/module.xml: This file specifies basic information about the component such as the components dependencies and its version number. This version number is used to determine schema and data updates
+    when bin/magento setup:upgrade is run. composer.js
+    
+    
+Class Magento\Framework\Module\ModuleList\Loader load etc/module.xml files and sort modules by sequence. The sequence use for sorting events, plugins, preferences and layouts.
+
+
+Common directories
+
+    Api - Any PHP classes exposed to the API.
+    Block - PHP view classes as part of Model View Controller(MVC) vertical implementation of module logic.
+    Console - Console commands
+    Controller - PHP controller classes as part of MVC vertical implementation of module logic.
+    Controller/Adminhtml - Admin controllers
+    Cron - Cron job classes
+    etc - Configuration files; in particular, module.xml, which is required.
+    Helper - Helpers
+    i18n - Localization files in CSV format
+    Model - PHP model classes as part of MVC vertical implementation of module logic.
+    Model/ResourceModel - Database interactions
+    Observer - Event listeners
+    Plugin - Contains any needed plug-ins.
+    Setup - Classes for module database structure and data setup which are invoked when installing or upgrading.
+    Test - Unit tests
+    Ui - UI component classes
+    view - View files, including static view files, design templates, email templates, and layout files.
+        view/{area}/email
+        view/{area}/layout
+        view/{area}/templates
+        view/{area}/ui_component
+        view/{area}/ui_component/templates
+        view/{area}/web
+        view/{area}/web/template
+        view/{area}/requirejs-config.js
+        
+        
+Theme file structure
+
+Example #1
+
+├── composer.json
+├── theme.xml
+├── etc
+│   └── view.xml
+├── i18n
+│   └── en_US.csv
+├── LICENSE_AFL.txt
+├── LICENSE.txt
+├── media
+│   └── preview.jpg
+├── registration.php
+└── web
+    ├── css
+    │   ├── email.less
+    │   ├── print.less
+    │   ├── source
+    │   │   ├── _actions-toolbar.less
+    │   │   ├── _breadcrumbs.less
+    │   │   ├── _buttons.less
+    │   │   ├── components
+    │   │   │   └── _modals_extend.less
+    │   │   ├── _icons.less
+    │   │   ├── _layout.less
+    │   │   ├── _theme.less
+    │   │   ├── _tooltips.less
+    │   │   ├── _typography.less
+    │   │   └── _variables.less
+    │   ├── _styles.less
+    │   ├── styles-l.less
+    │   └── styles-m.less
+    ├── images
+    │   └── logo.svg
+    └── js
+        ├── navigation-menu.js
+        ├── responsive.js
+        └── theme.js
+
+
+Language package file structure
+
+Example #2
+
+├── de_DE
+│   ├── composer.json
+│   ├── language.xml
+│   ├── LICENSE_AFL.txt
+│   ├── LICENSE.txt
+│   └── registration.php
+├── en_US
+│   ├── composer.json
+│   ├── language.xml
+│   ├── LICENSE_AFL.txt
+│   ├── LICENSE.txt
+│   └── registration.php
+├── pt_BR
+│   ├── composer.json
+│   ├── language.xml
+│   ├── LICENSE_AFL.txt
+│   ├── LICENSE.txt
+│   └── registration.php
+
+
+
+
+
+
+=============================================================================================================================
+
+2. Request Flow Processing                                            12%  7-8 question
+
+2.1 Utilize modes and application initialization
+2.2 Demonstrate ability to process URLs in Magento
+2.3 Demonstrate ability to customize URLs in Magento
+2.4 Determine the layout initialization process
+2.5 Determine the structure of block templates
+
+============================================================================================================================
+
+
+3. Customizing the Magento UI                                     10%   6-7 question
+
+3.1 Demonstrate ability to utilize themes and the template structure
+3.2 Determine how to use blocks
+3.3 Demonstrate ability to use layout and XML schema
+3.4 Utilize JavaScript in Magento
+
+
+
+
+3.4 Utilize JavaScript in Magento:
+
+Places where JavaScript resources are stored
+
+    lib/web/ — this folder contains the libraries that are used in Magento. These could be either third-party libraries such as jquery, underscore.js, knockout.js, or the Magento ones based on them in the /mage/folder;
+    app/code/[Vendor]/[Module]/view/[areaName]/web/ — a path for javascript files used in the module;
+    app/design/[areaName]/[VendorTheme]/[themeName]/web/ — a path for javascript files used in the theme;
+    app/design/[areaName]/[VendorTheme]/[themeName]/[Vendor]_[Module]/web/ — a path for inheritance javascript files of the module.
+
+
+=============================================================================================================================
+
+
+
+4. Working with Databases in Magento                            7%      3-4 question
+
+4.1 Demonstrate ability to use data-related classes
+4.2 Demonstrate ability to use install and upgrade scripts
+
+==============================================================================================================================
+
+
+5. Using the Entity-Attribute-Value (EAV) Model                 8%
+
+5.1 Demonstrate ability to use EAV model concepts
+5.2 Demonstrate ability to use EAV entity load and save
+5.3 Demonstrate ability to manage attributes
+
+
+==============================================================================================================================
+
+
+6. Developing with Adminhtml                                          10%
+
+6.1 Describe common structure/architecture
+6.2 Define form and grid widgets
+6.3 Define system configuration XML and configuration scope
+6.4 Utilize ACL to set menu items and permissions
+
+
+=========================================================================================================================
+
+7. Customizing the Catalog                                                12%
+
+7.1 Demonstrate ability to use products and product types
+7.2 Describe price functionality
+7.3 Demonstrate ability to use and customize categories
+7.4 Determine and manage catalog rules
+
+=====================================================================================================================
+
+
+8. Customizing the Checkout Process                                   13%
+
+8.1 Demonstrate ability to use quote, quote item, address, and shopping cart rules in checkout
+8.2 Demonstrate ability to use totals models
+8.3 Demonstrate ability to customize the shopping cart
+8.4 Demonstrate ability to customize shipping and payment methods
+
+=====================================================================================================================
+
+
+9. Sales Operations                                                 5%
+
+9.1 Demonstrate ability to customize sales operations
+
+=================================================================================
+     
+10. Customer Management                                                  5%
+
+10.1 Demonstrate ability to customize “My Account”
+10.2 Demonstrate ability to customize customer functionality
