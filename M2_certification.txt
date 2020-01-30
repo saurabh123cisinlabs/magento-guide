@@ -430,4 +430,8 @@ Places where JavaScript resources are stored
 10. Customer Management                                                  5%
 
 10.1 Demonstrate ability to customize “My Account”
+https://belvg.com/blog/customer-management-in-magento-2-customize-my-account-order-history-and-functionality.html
+
 10.2 Demonstrate ability to customize customer functionality
+
+
