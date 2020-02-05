@@ -413,6 +413,8 @@ Places where JavaScript resources are stored
 
 8. Customizing the Checkout Process                                   13%
 
+https://belvg.com/blog/how-to-customize-the-checkout-process-in-magento-2.html
+
 8.1 Demonstrate ability to use quote, quote item, address, and shopping cart rules in checkout
 8.2 Demonstrate ability to use totals models
 8.3 Demonstrate ability to customize the shopping cart
