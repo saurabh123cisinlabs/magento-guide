@@ -393,6 +393,9 @@ Places where JavaScript resources are stored
 
 6. Developing with Adminhtml                                          10%
 
+https://belvg.com/blog/magento-2-areas-adminhtml-base-and-frontend.html
+https://belvg.com/blog/magento-2-module-based-architecture.html
+
 6.1 Describe common structure/architecture
 6.2 Define form and grid widgets
 6.3 Define system configuration XML and configuration scope
@@ -402,6 +405,8 @@ Places where JavaScript resources are stored
 =========================================================================================================================
 
 7. Customizing the Catalog                                                12%
+
+https://belvg.com/blog/how-to-use-and-customize-magento-2-catalog-products-and-categories-price-and-price-rules.html
 
 7.1 Demonstrate ability to use products and product types
 7.2 Describe price functionality
