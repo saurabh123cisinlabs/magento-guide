@@ -24,6 +24,8 @@ Exam topics and the approximate percentage covered in the test:
 
 Magento Architecture & Customization Techniques      18%        11-12 question
 
+https://belvg.com/tutorial/magento-2-certified-professional-developer-guide-section-1
+
 1.1 Describe Magento’s module-based architecture
 1.2 Describe Magento’s directory structure
 1.3 Utilize configuration XML and variables scope
